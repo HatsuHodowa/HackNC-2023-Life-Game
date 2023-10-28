@@ -5,14 +5,29 @@ def rgb_convert(red, green, blue):
     return "#{:02x}{:02x}{:02x}".format(red, green, blue)
 
 
-
 class View:
 
+
+
     def __init__(self, controller, count):
+
+
         self.controller = controller
+
+
         self.window = tk.Tk()
+        self.window.resizable(False, False)
+        self.window.resizable(False, False)
         self.window.title("sample")
         self.window.geometry("750x500")
+
+        font = ('Helvetica', 14, "bold")
+
+        title = tk.Label(self.window, text = "")
+        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 6, width = 15, command = self.controller.start)
+    
+
+        start.place(x = 555, y = 50)
 
         self.width = 500
         self.height = 500
@@ -21,6 +36,8 @@ class View:
         self.squares = []
         self.cell_width = int(self.width / self.count)
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
+
+
 
     def create_squares(self):
         """Generates squares within cells."""
