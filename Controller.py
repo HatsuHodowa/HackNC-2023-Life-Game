@@ -2,14 +2,14 @@ import time
 import pygame
 import Model
 
-# main variables
+pygame.init()
 
 class Controller:
     def __init__(self):
 
         # propreties
         self.clock = pygame.time.Clock()
-        self.framerate = 5
+        self.framerate = 2
         self.model = Model.Model(10, 10)
 
         # running update loop
@@ -30,6 +30,7 @@ class Controller:
 
         # updating model
         self.model.cellUpdate()
+        print(self.model.li)
 
         print("Frame finish")
 
