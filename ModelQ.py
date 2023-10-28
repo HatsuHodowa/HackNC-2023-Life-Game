@@ -28,6 +28,10 @@ class Model:
             return 1
         else:
             return v
+    def pall(self):
+        for i in range(self.width):
+            for j in range(self.height):
+                self.li[i][j] = self.p(self.li[i][j])
     def cellUpdate(self):
         lin = np.array([[0.0]*self.height] * self.width)
         for x in range(self.width):

@@ -9,7 +9,7 @@ class Controller:
 
         # properties
         self.clock = pygame.time.Clock()
-        self.framerate = 0
+        self.framerate = 1000
         self.cell_count = 25
         self.active = False
 
