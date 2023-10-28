@@ -18,7 +18,7 @@ class View:
 
         self.window = tk.Tk()
         self.window.resizable(False, False)
-        self.window.title("sample")
+        self.window.title("Quantum Life Battles")
         self.window.geometry("750x500")
 
         font = ('Helvetica', 14, "bold")
