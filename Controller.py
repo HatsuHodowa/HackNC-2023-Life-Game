@@ -40,7 +40,7 @@ class Controller:
 
             for x, row in enumerate(model.li):
                 for y, value in enumerate(row):
-                    model.setCell(x, y, values[current_index])
+                    model.setCell(y, x, values[current_index])
                     current_index += 1
 
     def start(self):
