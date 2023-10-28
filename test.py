@@ -1,6 +1,6 @@
-import Model
+import ModelQ
 
-m = Model.Model(3, 3)
+m = ModelQ.Model(3, 3)
 
 m.setCell(1, 0, 1)
 
