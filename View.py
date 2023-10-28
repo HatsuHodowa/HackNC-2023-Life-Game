@@ -25,9 +25,9 @@ class View:
         self.status = tk.Label(self.window, text = "Status: Stopped", font = font)
         slidelabel = tk.Label(self.window, text = "Speed Slider", font = font)
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
-        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 3, width = 15, command = self.started)
-        stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 3, width = 15, command = self.stopped)
-        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 3, width = 15, command = self.resetted)
+        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 1, width = 15, command = self.started)
+        stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 1, width = 15, command = self.stopped)
+        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 1, width = 15, command = self.resetted)
     
         self.status.place(x = 555, y = 10)
         start.place(x = 555, y = 50)
