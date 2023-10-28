@@ -16,13 +16,6 @@ class Controller:
         self.model = ModelQ.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
 
-        # adding cells
-        self.model.setCell(5, 5, 1)
-        self.model.setCell(5, 6, 1)
-        self.model.setCell(6, 6, 1)
-        self.model.setCell(6, 7, 1)
-        self.model.setCell(7, 5, 1)
-
         # looping
         while True:
 
