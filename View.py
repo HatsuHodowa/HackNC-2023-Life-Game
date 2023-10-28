@@ -24,26 +24,30 @@ class View:
         font = ('Helvetica', 14, "bold")
 
         self.status = tk.Label(self.window, text = "Status: Stopped", font = font)
-        slidelabel = tk.Label(self.window, text = "Speed Slider", font = font)
+        speedlabel = tk.Label(self.window, text = "Speed Slider", font = font)
+        zoomlabel = tk.Label(self.window, text = "Zoom Slider", font = font)
+        
+        self.grid_count = tk.Scale(self.window, from_ = 1, to = self.controller.cell_count, command = self.cell_adjust, orient = "horizontal")
+        self.grid_count.set(self.controller.cell_count)
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
+
         start = tk.Button(self.window, text = "Start Simulation", font = font, height = 1, width = 15, command = self.started)
         stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 1, width = 15, command = self.stopped)
         reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 1, width = 15, command = self.resetted)
         input_file = tk.Button(self.window, text = "Input Configuration", font = font, height = 1, width = 15, command = self.upload_file)
         save_config = tk.Button(self.window, text = "Save Configuration", font = font, height = 1, width = 15, command = self.controller.saveConfiguration)
-        
-        self.grid_count = tk.Scale(self.window, from_ = 1, to = 100, command = self.cell_adjust, orient = "horizontal")
 
     
         self.status.place(x = 575, y = 10)
         start.place(x = 555, y = 50)
         stop.place(x = 555, y = 110)
         reset.place(x = 555, y = 170)
-        self.slider.place(x = 570, y = 270)
-        slidelabel.place(x = 575, y = 240)
+        self.slider.place(x = 570, y = 240)
+        speedlabel.place(x = 575, y = 220)
+        zoomlabel.place(x = 575, y = 280)
         save_config.place(x = 555, y = 420)
         input_file.place(x = 555, y = 370)
-        self.grid_count.place(x = 570, y = 320)
+        self.grid_count.place(x = 570, y = 300)
 
         self.width = 500
         self.height = 500
