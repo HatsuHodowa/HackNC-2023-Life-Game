@@ -28,7 +28,6 @@ class View:
         zoomlabel = tk.Label(self.window, text = "Zoom Slider", font = font)
         
         self.grid_count = tk.Scale(self.window, from_ = 1, to = self.controller.cell_count, command = self.cell_adjust, orient = "horizontal")
-        self.grid_count.set(self.controller.cell_count)
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
 
         start = tk.Button(self.window, text = "Start Simulation", font = font, height = 1, width = 15, command = self.started)
@@ -56,9 +55,13 @@ class View:
         self.squares = []
         self.cell_width = int(self.width / self.count)
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
+        self.canvas.bind("<B1-Motion>", self.scroll_move)
+
+    def scroll_move(self, event):
+        self.canvas.scan_dragto(event.x, event.y, gain = 1)
 
     def update_cell_count(self, count):
-        self.count = count
+        self.count = self.controller.cell_count - count
         self.cell_width = int(self.width / self.count)
         
 
