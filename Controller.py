@@ -27,7 +27,8 @@ class Controller:
         self.cell_count = toSet
         self.model.width = toSet
         self.model.height = toSet
-        self.view.count = toSet
+        self.view.update_cell_count(toSet)
+        self.update()
 
     def saveConfiguration(self):
         config = self.model.pm.li
@@ -46,7 +47,7 @@ class Controller:
 
             for x, row in enumerate(model.li):
                 for y, value in enumerate(row):
-                    model.setCell(y, x, values[current_index])
+                    model.setCell(x, y, values[current_index])
                     current_index += 1
 
     def start(self):
