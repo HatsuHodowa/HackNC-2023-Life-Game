@@ -15,9 +15,9 @@ class Model:
         c = 0
         for x in range(i-1, i+2):
             for y in range(j-1, j+2):
-                if (x != i) or (j!= y):
+                if self.valid(x, y):
                     
-                    if self.valid(x, y):
+                    if (x != i) or (j!= y):
                         c += self.li[x][y]
                         
         return c
@@ -36,18 +36,18 @@ class Model:
                 current = self.li[x][y]
                 #cases
                 #print(x, y, current, temp)
-                if current > 0.5 and 2 < temp and temp < 3 :
+                if current > 0.5 and 2 <= temp and temp <= 3 :
                     lin[x][y] = 1
-                elif current < 0.5  and temp > 2.5 and temp < 3.5:
-                    lin[x][y] = 1
-                elif current < 0.5  and temp > 1.5 and temp < 2.5:
-                    lin[x][y] = self.p(current + 0.5)
-                elif current < 0.5  and temp > 3.5 and temp < 4.5:
-                    lin[x][y] = self.p(current + 0.5)
-                elif current > 0.5 and 1 < temp and temp < 2 :
+                elif current < 0.5  and temp >= 2.5 and temp <= 3.5:
+                    lin[x][y] = self.p(current + 0.9)
+                elif current < 0.5  and temp >= 1.5 and temp < 2.5:
+                    lin[x][y] = self.p(current + 0.2)
+                elif current < 0.5  and temp > 3.5 and temp <= 4.5:
+                    lin[x][y] = self.p(current + 0.2)
+                elif current > 0.5 and 1 <= temp and temp < 2 :
                     lin[x][y] = self.p(current - 0.1)
                 elif current > 0.5 and 0 < temp and temp < 1 :
-                    lin[x][y] = self.p(current - 0.5)
+                    lin[x][y] = self.p(current - 0.2)
                 elif current > 0.5 and 3 < temp :
                     lin[x][y] = self.p(current - temp*0.1)
                 else:
