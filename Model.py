@@ -29,17 +29,18 @@ class Model:
                 temp = self.alive(x, y)
                 current = self.li[x][y]
                 #cases
-                print(x, y, current, temp)
+                #print(x, y, current, temp)
                 if current == 1 and temp in [2, 3]:
                     lin[x][y] = 1
                 elif current ==0  and temp == 3:
                     lin[x][y] = 1
                 else:
                     lin[x][y] = 0
-        print(lin)
+        #print(lin)
         self.li = lin
     def setCell(self, i, j, value):
-        self.li[i][j] = value
+        if self.valid(i, j):
+            self.li[i][j] = value
 
     def getWidth(self):
         return self.width
