@@ -1,5 +1,4 @@
 import time
-import pygame
 import Model
 import ModelQ
 import View
@@ -8,25 +7,18 @@ class Controller:
     def __init__(self):
 
         # properties
-        self.clock = pygame.time.Clock()
-        self.framerate = 0
+        self.framerate = 1
         self.cell_count = 25
         self.active = False
 
+        # modules
         self.model = ModelQ.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
 
-        # looping
+        # looping update
+        self.last_physics_update = time.time()
         while True:
-
-            # timing frames per second
-            t1 = time.time()
-            self.clock.tick(self.framerate)
-            t2 = time.time()
-            dt = t2 - t1
-
-            # updating
-            self.update(dt)
+            self.update()
 
     def start(self):
         self.active = True
@@ -42,11 +34,16 @@ class Controller:
     def setCell(self, i, j, value):
         self.model.setCell(i, j, value)
 
-    def update(self, dt):
+    def update(self):
 
         # updating model
-        if self.active == True:
+        current_time = time.time()
+        dt = time.time() - self.last_physics_update
+        frameTime = 1 / self.framerate
+        
+        if self.active == True and dt >= 1 / self.framerate:
             self.model.cellUpdate()
+            self.last_physics_update = current_time
 
         # updating display
         self.view.update()
