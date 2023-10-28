@@ -17,17 +17,20 @@ class View:
 
         self.window = tk.Tk()
         self.window.resizable(False, False)
-        self.window.resizable(False, False)
         self.window.title("sample")
         self.window.geometry("750x500")
 
         font = ('Helvetica', 14, "bold")
 
         title = tk.Label(self.window, text = "")
-        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 6, width = 15, command = self.controller.start)
+        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 3, width = 15, command = self.controller.start)
+        stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 3, width = 15, command = self.controller.stop)
+        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 3, width = 15, command = self.controller.clearCells)
     
 
         start.place(x = 555, y = 50)
+        stop.place(x = 555, y = 110)
+        reset.place(x = 555, y = 170)
 
         self.width = 500
         self.height = 500
@@ -63,10 +66,8 @@ class View:
         
 
         for line in range(0, self.width, int(self.cell_width)):
-            a = self.canvas.create_line((line, 0), (line, self.height) , fill = "grey", tags = "")
-            b = self.canvas.create_line((0, line), (self.width, line), fill = "grey", tag = "")
-            self.squares.append(a)
-            self.squares.append(b)
+            self.canvas.create_line((line, 0), (line, self.height) , fill = "grey", tags = "")
+            self.canvas.create_line((0, line), (self.width, line), fill = "grey", tag = "")
         
         self.canvas.grid(row = 0, column = 0)
 

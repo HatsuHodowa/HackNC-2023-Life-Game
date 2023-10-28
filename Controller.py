@@ -16,15 +16,11 @@ class Controller:
         self.model = ModelQ.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
 
-        # setting initial configuration for testing
+        # adding cells
         self.model.setCell(5, 5, 1)
         self.model.setCell(5, 6, 1)
-        self.model.setCell(5, 7, 1)
-        self.model.setCell(6, 7, 1)
-        self.model.setCell(7, 6, 1)
 
         # looping
-        #self.start()
         while True:
 
             # timing frames per second
@@ -41,6 +37,14 @@ class Controller:
 
     def stop(self):
         self.active = False
+
+    def clearCells(self):
+        for i, row in enumerate(self.model.li):
+            for j, row in enumerate(row):
+                self.model.setCell(i, j, 0)
+
+    def setCell(self, i, j, value):
+        self.model.setCell(i, j, value)
 
     def update(self, dt):
 
