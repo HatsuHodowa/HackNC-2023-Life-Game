@@ -1,11 +1,11 @@
-
+import numpy as np
 
 
 class Model:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.li = [[0]*height] * width
+        self.li = np.array([[0]*height] * width)
 
     def getCell(self, i, j):
         return self.li[i][j]
@@ -20,7 +20,7 @@ class Model:
                         c += 1
         return c
     def cellUpdate(self):
-        lin = [[0]*self.height] * self.width
+        lin = np.array([[0]*self.height] * self.width)
         for x in range(self.width):
             for y in range(self.height):
                 temp = self.alive(x, y)
@@ -41,5 +41,13 @@ class Model:
 
     def getHeight(self):
         return self.height
+    def printli(self):
+        print(self.li)
+    def print(self):
+        for y in range(self.height):
+            for x in range(self.width): 
+                
+                print(self.li[x][y], end="\t")
+            print("")
 
 
