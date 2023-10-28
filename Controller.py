@@ -35,7 +35,9 @@ class Controller:
 
     def loadConfiguration(self, model, file):
         model.clearCells()
-        
+        with open(file, "r") as f:
+            values = f.readlines()
+            print(values)
 
     def start(self):
         self.active = True

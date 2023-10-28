@@ -64,7 +64,7 @@ class View:
         self.status.config(text = "Status: Stopped")
 
     def upload_file(self):
-        self.controller.loadConfiguration(self.model.pm, filedialog.askopenfilename())
+        self.controller.loadConfiguration(self.controller.model.pm, filedialog.askopenfilename())
 
     def change_framerate(self, event):
         self.controller.framerate = self.slider.get()
