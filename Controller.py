@@ -34,10 +34,14 @@ class Controller:
             f.close()
 
     def loadConfiguration(self, model, file):
-        model.clearCells()
         with open(file, "r") as f:
-            values = f.readlines()
-            print(values)
+            values = f.read().split(",")
+            current_index = 0
+
+            for x, row in enumerate(model.li):
+                for y, value in enumerate(row):
+                    model.setCell(x, y, values[current_index])
+                    current_index += 1
 
     def start(self):
         self.active = True
