@@ -54,7 +54,7 @@ class View:
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
 
     def cell_adjust(self, event):
-        self.controller.cell_count = self.grid_count.get()
+        self.controller.updateCellCount(self.grid_count.get())
     
     def resetted(self):
         self.controller.clearCells()
