@@ -10,7 +10,9 @@ class Controller:
         # propreties
         self.clock = pygame.time.Clock()
         self.framerate = 2
-        self.model = Model.Model(10, 10)
+        self.height = 10
+        self.width = 10
+        self.model = Model.Model(self.width, self.height)
 
         # running update loop
         while True:
@@ -30,7 +32,7 @@ class Controller:
 
         # updating model
         self.model.cellUpdate()
-        print(self.model.li)
+        #print(self.model.li)
 
         print("Frame finish")
 
