@@ -22,7 +22,8 @@ class View:
 
         font = ('Helvetica', 14, "bold")
 
-        self.status = tk.Label(self.window, text = "Status: Stopped")
+        self.status = tk.Label(self.window, text = "Status: Stopped", font = font)
+        slidelabel = tk.Label(self.window, text = "Speed Slider", font = font)
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
         start = tk.Button(self.window, text = "Start Simulation", font = font, height = 3, width = 15, command = self.started)
         stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 3, width = 15, command = self.stopped)
@@ -32,7 +33,8 @@ class View:
         start.place(x = 555, y = 50)
         stop.place(x = 555, y = 110)
         reset.place(x = 555, y = 170)
-        self.slider.place(x = 565, y = 250)
+        self.slider.place(x = 570, y = 270)
+        slidelabel.place(x = 570, y = 240)
 
         self.width = 500
         self.height = 500
@@ -45,7 +47,7 @@ class View:
     def resetted(self):
         self.controller.clearCells()
         self.controller.stop()
-        self.status.config("Status: Stopped")
+        self.status.config(text = "Status: Stopped")
 
     def started(self):
         self.controller.start()
