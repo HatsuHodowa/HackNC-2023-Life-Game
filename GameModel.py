@@ -18,9 +18,10 @@ class Model:
     def cellUpdate(self):
         self.pm.cellUpdate()
         self.om.cellUpdate()
-        temp = self.pm.li * 1
-        self.pm.li = temp - self.om.li*0.5
-        self.om.li = self.om.li - 0.5 * temp
+        temp = self.pm.li.copy()
+        k=0.1
+        self.pm.li = self.pm.li - self.om.li*k
+        self.om.li = self.om.li - k * temp
         self.pm.pall()
         self.om.pall()
     def setCellO(self, i, j, value):
