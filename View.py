@@ -24,7 +24,7 @@ class View:
         font = ('Helvetica', 14, "bold")
 
         title = tk.Label(self.window, text = "")
-        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 6, width = 15, command = "")
+        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 6, width = 15, command = self.controller.start)
     
 
         start.place(x = 555, y = 50)
@@ -46,9 +46,9 @@ class View:
             for x, value in enumerate(cells):
                 x_position = self.cell_width * x
                 y_position = self.cell_width * y
-                red = 255 * value
-                green = 255 * value
-                blue = 255 * value
+                red = int(255 * value)
+                green = int(255 * value)
+                blue = int(255 * value)
                 square = self.canvas.create_rectangle(x_position, y_position, x_position + self.cell_width, y_position + self.cell_width, fill = rgb_convert(red, green, blue))
 
 
