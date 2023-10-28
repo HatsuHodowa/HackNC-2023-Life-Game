@@ -39,6 +39,9 @@ class Controller:
             for j, row in enumerate(row):
                 self.model.setCell(i, j, 0)
 
+    def setCell(self, i, j, value):
+        self.model.setCell(i, j, value)
+
     def update(self, dt):
 
         # updating model
