@@ -9,7 +9,7 @@ class Controller:
 
         # properties
         self.clock = pygame.time.Clock()
-        self.framerate = 2
+        self.framerate = 0
         self.cell_count = 10
         self.active = False
 
@@ -24,7 +24,7 @@ class Controller:
         self.model.setCell(7, 6, 1)
 
         # looping
-        #self.start()
+        self.start()
         while True:
 
             # timing frames per second

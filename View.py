@@ -18,14 +18,15 @@ class View:
         self.height = 500
 
         self.count = count
-
+        self.squares = []
         self.cell_width = int(self.width / self.count)
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
 
     def create_squares(self):
         """Generates squares within cells."""
-
-
+        for k in self.squares:
+            self.canvas.delete(k)
+        self.squares = []
 
         for y, cells in enumerate(self.controller.model.li): 
             for x, value in enumerate(cells):
@@ -35,7 +36,7 @@ class View:
                 green = int(255 * value)
                 blue = int(255 * value)
                 square = self.canvas.create_rectangle(x_position, y_position, x_position + self.cell_width, y_position + self.cell_width, fill = rgb_convert(red, green, blue))
-
+                self.squares.append(square)
         
                 
                     
@@ -45,8 +46,10 @@ class View:
         
 
         for line in range(0, self.width, int(self.cell_width)):
-            self.canvas.create_line((line, 0), (line, self.height) , fill = "grey", tags = "")
-            self.canvas.create_line((0, line), (self.width, line), fill = "grey", tag = "")
+            a = self.canvas.create_line((line, 0), (line, self.height) , fill = "grey", tags = "")
+            b = self.canvas.create_line((0, line), (self.width, line), fill = "grey", tag = "")
+            self.squares.append(a)
+            self.squares.append(b)
         
         self.canvas.grid(row = 0, column = 0)
 
