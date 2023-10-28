@@ -39,7 +39,7 @@ class View:
         reset.place(x = 555, y = 170)
         self.slider.place(x = 570, y = 270)
         slidelabel.place(x = 575, y = 240)
-        save_config.place(x = 555, y = 400)
+        save_config.place(x = 555, y = 420)
         input_file.place(x = 555, y = 370)
 
         self.width = 500
@@ -64,7 +64,7 @@ class View:
         self.status.config(text = "Status: Stopped")
 
     def upload_file(self):
-        self.controller.localConfiguration(self.model.pm, filedialog.askopenfilename())
+        self.controller.loadConfiguration(self.model.pm, filedialog.askopenfilename())
 
     def change_framerate(self, event):
         self.controller.framerate = self.slider.get()
