@@ -27,7 +27,13 @@ class Controller:
         timestamp = str(int(time.time()))
         size_text = str(self.cell_count) + "x" + str(self.cell_count)
 
+        with open(f"SaveData/level_config-{timestamp}-{size_text}.txt", "w") as f:
+            for row in config:
+                for value in row:
+                    f.write(str(value) + ",")
+            f.close()
 
+    def loadConfiguration(self, model, file):
         model.clearCells()
         
 
