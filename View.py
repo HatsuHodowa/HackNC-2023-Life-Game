@@ -92,8 +92,8 @@ class View:
         self.controller.framerate = self.slider.get()
 
     def on_square_click(self, event):
-        x = int(event.x / self.cell_width)
-        y = int(event.y / self.cell_width)
+        x = int(self.canvas.canvasx(event.x) / self.cell_width)
+        y = int(self.canvas.canvasy(event.y) / self.cell_width)
         value = self.controller.model.getCellP(y, x)
         self.controller.model.setCellP(y, x, 1 - value)
 
