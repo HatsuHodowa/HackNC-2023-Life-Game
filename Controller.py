@@ -16,7 +16,9 @@ class Controller:
         # modules
         self.model = GameModel.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
-
+        self.model.setCellO(4, 5, 1)
+        self.model.setCellO(4, 6, 1)
+        self.model.setCellO(4, 7, 1)
         # looping update
         self.last_physics_update = time.time()
         while True:
