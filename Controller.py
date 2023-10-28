@@ -22,6 +22,12 @@ class Controller:
         self.last_physics_update = time.time()
         while True:
             self.update()
+            
+    def updateCellCount(self, toSet):
+        self.cell_count = toSet
+        self.model.width = toSet
+        self.model.height = toSet
+        self.view.count = toSet
 
     def saveConfiguration(self):
         config = self.model.pm.li
