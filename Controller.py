@@ -3,6 +3,7 @@ import Model
 import ModelQ
 import GameModel
 import View
+import datetime
 
 class Controller:
     def __init__(self):
@@ -22,6 +23,13 @@ class Controller:
         self.last_physics_update = time.time()
         while True:
             self.update()
+
+    def saveConfiguration(self):
+        config = self.model.pm.li
+        file_name = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        txt = open(file_name + ".cdt", "w")
+
+        
 
     def start(self):
         self.active = True
