@@ -15,9 +15,9 @@ class Model:
         c = 0
         for x in range(i-1, i+2):
             for y in range(j-1, j+2):
-                if (x != i) or (j!= y):
+                if self.valid(x, y):
                     
-                    if self.valid(x, y):
+                    if (x != i) or (j!= y):
                         c += self.li[x][y]
                         
         return c
