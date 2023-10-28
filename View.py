@@ -57,6 +57,12 @@ class View:
                 blue = int(255 * value)
                 square = self.canvas.create_rectangle(x_position, y_position, x_position + self.cell_width, y_position + self.cell_width, fill = rgb_convert(red, green, blue))
                 self.squares.append(square)
+
+                def on_mouse_click(event):
+                    print(x, y)
+                    self.controller.setCell(x, y, 1 - value)
+
+                self.canvas.tag_bind(square, '<Button-1>', on_mouse_click) 
         
                 
                     
@@ -73,6 +79,6 @@ class View:
 
 
     def update(self):
-        print('updated')
+
         self.create_squares()
         self.create_grid()
