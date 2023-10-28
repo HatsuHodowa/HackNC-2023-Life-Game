@@ -53,6 +53,11 @@ class View:
         self.cell_width = int(self.width / self.count)
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
 
+    def update_cell_count(self, count):
+        self.count = count
+        self.cell_width = int(self.width / self.count)
+        
+
     def cell_adjust(self, event):
         self.controller.updateCellCount(self.grid_count.get())
     
