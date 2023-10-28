@@ -37,21 +37,21 @@ class Model:
                 #cases
                 #print(x, y, current, temp)
                 if current > 0.5:
-                    if 2.3 <= temp and temp <= 2.8 :
+                    if 2.3 <= temp and temp <= 2.9 :
                         lin[x][y] = 1
                     elif 1 <= temp and temp < 2.3 :
                         lin[x][y] = self.p(current - 0.2)
                     elif 0 < temp and temp < 1 :
-                        lin[x][y] = self.p(current - 0.3)
-                    elif 2.8 < temp :
-                        lin[x][y] = self.p(current - temp*0.2000)
+                        lin[x][y] = self.p(current - 0.2)
+                    elif 2.9 < temp :
+                        lin[x][y] = self.p(current - temp*0.2)
                     else:
                         lin[x][y] = 0
                 elif current < 0.5:
                     if temp >= 2.5 and temp <= 3.5:
                         lin[x][y] = self.p(current + 0.4)
                     elif temp >= 1.5 and temp < 2.5:
-                        lin[x][y] = self.p(current + 0.15)
+                        lin[x][y] = self.p(current + 0.2)
                     elif temp > 3.5 and temp <= 4.5:
                         lin[x][y] = self.p(current + 0.1)
                     else:
