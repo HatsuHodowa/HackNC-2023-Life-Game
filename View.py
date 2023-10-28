@@ -3,7 +3,7 @@ import tkinter as tk
 
 class View:
 
-    def __init__(self):
+    def __init__(self, count):
         self.window = tk.Tk()
         self.window.title("sample")
         self.window.geometry("750x500")
@@ -12,13 +12,9 @@ class View:
         self.width = 500
         self.height = 500
 
-        self.count = 5
+        self.count = count
 
         self.cell_width = int(self.width / self.count)
-
-        self.update()
-
-        self.window.mainloop()
 
     def create_grid(self):
         
@@ -34,6 +30,5 @@ class View:
         pass
 
     def update(self):
+        print('updated')
         self.create_grid()
-
-view = View()

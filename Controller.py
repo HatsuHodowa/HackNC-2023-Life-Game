@@ -1,8 +1,7 @@
 import time
 import pygame
 import Model
-
-pygame.init()
+import View
 
 class Controller:
     def __init__(self):
@@ -10,9 +9,10 @@ class Controller:
         # propreties
         self.clock = pygame.time.Clock()
         self.framerate = 2
-        self.height = 10
-        self.width = 10
-        self.model = Model.Model(self.width, self.height)
+        self.cell_count = 10
+
+        self.model = Model.Model(self.cell_count, self.cell_count)
+        self.view = View.View(self.cell_count)
 
         # running update loop
         while True:
@@ -32,7 +32,11 @@ class Controller:
 
         # updating model
         self.model.cellUpdate()
-        #print(self.model.li)
+        print(self.model.li)
+
+        # updating view
+        self.view.update()
+        self.view.window.update()
 
         print("Frame finish")
 
