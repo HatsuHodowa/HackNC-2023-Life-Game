@@ -12,7 +12,7 @@ class Controller:
         self.cell_count = 10
 
         self.model = Model.Model(self.cell_count, self.cell_count)
-        self.view = View.View(self.cell_count)
+        self.view = View.View(self, self.cell_count)
 
         # running update loop
         while True:
@@ -27,18 +27,13 @@ class Controller:
             self.update(dt)
 
     def update(self, dt):
-        print("-----------")
-        print("Frame start")
 
         # updating model
         self.model.cellUpdate()
-        print(self.model.li)
 
         # updating view
         self.view.update()
         self.view.window.update()
-
-        print("Frame finish")
 
 # creating controller for testing
 control = Controller()
