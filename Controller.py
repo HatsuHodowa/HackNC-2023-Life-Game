@@ -1,6 +1,7 @@
 import time
 import pygame
 import Model
+import ModelQ
 import View
 
 class Controller:
@@ -11,7 +12,7 @@ class Controller:
         self.framerate = 1
         self.cell_count = 25
 
-        self.model = Model.Model(self.cell_count, self.cell_count)
+        self.model = ModelQ.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
 
         # setting initial configuration for testing

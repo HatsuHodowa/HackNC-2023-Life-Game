@@ -31,9 +31,9 @@ class View:
             for x, value in enumerate(cells):
                 x_position = self.cell_width * x
                 y_position = self.cell_width * y
-                red = 255 * value
-                green = 255 * value
-                blue = 255 * value
+                red = int(255 * value)
+                green = int(255 * value)
+                blue = int(255 * value)
                 square = self.canvas.create_rectangle(x_position, y_position, x_position + self.cell_width, y_position + self.cell_width, fill = rgb_convert(red, green, blue))
 
         
