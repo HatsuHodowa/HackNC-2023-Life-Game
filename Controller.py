@@ -27,7 +27,8 @@ class Controller:
         self.cell_count = toSet
         self.model.width = toSet
         self.model.height = toSet
-        self.view.count = toSet
+        self.view.update_cell_count(toSet)
+        self.update()
 
     def saveConfiguration(self):
         config = self.model.pm.li
