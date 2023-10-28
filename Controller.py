@@ -28,12 +28,10 @@ class Controller:
         self.active = False
 
     def clearCells(self):
-        for i, row in enumerate(self.model.li):
+        for i, row in enumerate(self.model.pm.li):
             for j, row in enumerate(row):
-                self.model.setCell(i, j, 0)
-
-    def setCell(self, i, j, value):
-        self.model.setCell(i, j, value)
+                self.model.setCellO(i, j, 0)
+                self.model.setCellP(i, j, 0)
 
     def update(self):
 

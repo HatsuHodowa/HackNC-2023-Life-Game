@@ -64,8 +64,8 @@ class View:
     def on_square_click(self, event):
         x = int(event.x / self.cell_width)
         y = int(event.y / self.cell_width)
-        value = self.controller.model.getCell(y, x)
-        self.controller.setCell(y, x, 1 - value)
+        value = self.controller.model.getCellP(y, x)
+        self.controller.model.setCellP(y, x, 1 - value)
 
     def create_squares(self):
         """Generates squares within cells."""
@@ -73,12 +73,15 @@ class View:
             self.canvas.delete(k)
         self.squares = []
 
-        for y, cells in enumerate(self.controller.model.li): 
+        for y, cells in enumerate(self.controller.model.pm.li): 
             for x, value in enumerate(cells):
                 x_position = self.cell_width * x
                 y_position = self.cell_width * y
-                red = int(255 * value)
-                green = int(255 * value)
+
+                opponent_value = self.controller.model.getCellO(x, y)
+
+                red = int(255 * opponent_value)
+                green = 0
                 blue = int(255 * value)
                 square = self.canvas.create_rectangle(x_position, y_position, x_position + self.cell_width, y_position + self.cell_width, fill = rgb_convert(red, green, blue))
                 self.squares.append(square)
