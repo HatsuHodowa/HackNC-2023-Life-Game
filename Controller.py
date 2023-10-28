@@ -4,13 +4,14 @@ import ModelQ
 import GameModel
 import View
 import datetime
+from tkinter import filedialog
 
 class Controller:
     def __init__(self):
 
         # properties
         self.framerate = 5
-        self.cell_count = 25
+        self.cell_count = 15
         self.active = False
 
         # modules
@@ -24,10 +25,9 @@ class Controller:
 
     def saveConfiguration(self):
         config = self.model.pm.li
-        timestamp = str(int(time.time()))
-        size_text = str(self.cell_count) + "x" + str(self.cell_count)
+        file = filedialog.asksaveasfilename(initialdir="/SaveData", filetypes=[("Text file", "*.txt")])
 
-        with open(f"SaveData/level_config-{timestamp}-{size_text}.txt", "w") as f:
+        with open(file, "w") as f:
             for row in config:
                 for value in row:
                     f.write(str(value) + ",")
