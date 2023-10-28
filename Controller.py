@@ -8,8 +8,8 @@ class Controller:
 
         # propreties
         self.clock = pygame.time.Clock()
-        self.framerate = 2
-        self.cell_count = 10
+        self.framerate = 1
+        self.cell_count = 25
 
         self.model = Model.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
@@ -18,6 +18,8 @@ class Controller:
         self.model.setCell(5, 5, 1)
         self.model.setCell(5, 6, 1)
         self.model.setCell(5, 7, 1)
+        self.model.setCell(6, 7, 1)
+        self.model.setCell(7, 6, 1)
 
         # running update loop
         while True:
