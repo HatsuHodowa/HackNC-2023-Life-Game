@@ -28,13 +28,15 @@ class View:
         start = tk.Button(self.window, text = "Start Simulation", font = font, height = 1, width = 15, command = self.started)
         stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 1, width = 15, command = self.stopped)
         reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 1, width = 15, command = self.resetted)
+        save_config = tk.Button(self.window, text = "Save Configuration", font = font, height = 1, width = 15, command = self.controller.saveConfiguration)
     
-        self.status.place(x = 555, y = 10)
+        self.status.place(x = 575, y = 10)
         start.place(x = 555, y = 50)
         stop.place(x = 555, y = 110)
         reset.place(x = 555, y = 170)
         self.slider.place(x = 570, y = 270)
-        slidelabel.place(x = 570, y = 240)
+        slidelabel.place(x = 575, y = 240)
+        save_config.place(x = 575, y = 400)
 
         self.width = 500
         self.height = 500
