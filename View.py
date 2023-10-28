@@ -22,15 +22,17 @@ class View:
 
         font = ('Helvetica', 14, "bold")
 
-        title = tk.Label(self.window, text = "")
-        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 3, width = 15, command = self.controller.start)
-        stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 3, width = 15, command = self.controller.stop)
-        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 3, width = 15, command = self.controller.clearCells)
+        self.status = tk.Label(self.window, text = "Status: Stopped")
+        self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
+        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 3, width = 15, command = self.started)
+        stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 3, width = 15, command = self.stopped)
+        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 3, width = 15, command = self.resetted)
     
-
+        self.status.place(x = 555, y = 10)
         start.place(x = 555, y = 50)
         stop.place(x = 555, y = 110)
         reset.place(x = 555, y = 170)
+        self.slider.place(x = 565, y = 250)
 
         self.width = 500
         self.height = 500
@@ -39,8 +41,23 @@ class View:
         self.squares = []
         self.cell_width = int(self.width / self.count)
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
-
     
+    def resetted(self):
+        self.controller.clearCells()
+        self.controller.stop()
+        self.status.config("Status: Stopped")
+
+    def started(self):
+        self.controller.start()
+        self.status.config(text = "Status: Running")
+    
+    def stopped(self):
+        self.controller.stop()
+        self.status.config(text = "Status: Stopped")
+
+
+    def change_framerate(self, event):
+        self.controller.framerate = self.slider.get()
 
     def on_square_click(self, event):
         x = int(event.x / self.cell_width)
