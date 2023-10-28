@@ -16,9 +16,7 @@ class Controller:
         # modules
         self.model = GameModel.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
-        self.model.setCellO(4, 5, 1)
-        self.model.setCellO(4, 6, 1)
-        self.model.setCellO(4, 7, 1)
+
         # looping update
         self.last_physics_update = time.time()
         while True:
@@ -26,9 +24,11 @@ class Controller:
 
     def saveConfiguration(self):
         config = self.model.pm.li
-        file_name = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        txt = open(file_name + ".cdt", "w")
+        timestamp = str(int(time.time()))
+        size_text = str(self.cell_count) + "x" + str(self.cell_count)
 
+
+        model.clearCells()
         
 
     def start(self):
