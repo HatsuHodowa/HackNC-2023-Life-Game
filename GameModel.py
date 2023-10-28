@@ -6,8 +6,8 @@ class Model:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.pm = ModelQ(width, height)
-        self.om = ModelQ(width, height)
+        self.pm = ModelQ.Model(width, height)
+        self.om = ModelQ.Model(width, height)
 
     def getCellO(self, i, j):
         return self.om.getCell(i, j)

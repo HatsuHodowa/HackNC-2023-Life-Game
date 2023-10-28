@@ -1,18 +1,19 @@
 import time
 import Model
 import ModelQ
+import GameModel
 import View
 
 class Controller:
     def __init__(self):
 
         # properties
-        self.framerate = 1
+        self.framerate = 5
         self.cell_count = 25
         self.active = False
 
         # modules
-        self.model = ModelQ.Model(self.cell_count, self.cell_count)
+        self.model = GameModel.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
 
         # looping update
@@ -40,7 +41,7 @@ class Controller:
         current_time = time.time()
         dt = time.time() - self.last_physics_update
         frameTime = 1 / self.framerate
-        
+
         if self.active == True and dt >= 1 / self.framerate:
             self.model.cellUpdate()
             self.last_physics_update = current_time
