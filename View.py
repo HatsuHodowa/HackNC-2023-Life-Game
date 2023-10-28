@@ -31,6 +31,8 @@ class View:
         reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 1, width = 15, command = self.resetted)
         input_file = tk.Button(self.window, text = "Input Configuration", font = font, height = 1, width = 15, command = self.upload_file)
         save_config = tk.Button(self.window, text = "Save Configuration", font = font, height = 1, width = 15, command = self.controller.saveConfiguration)
+        
+        self.grid_count = tk.Scale(self.window, from_ = 1, to = 100, command = self.cell_adjust, orient = "horizontal")
 
     
         self.status.place(x = 575, y = 10)
@@ -41,6 +43,7 @@ class View:
         slidelabel.place(x = 575, y = 240)
         save_config.place(x = 555, y = 420)
         input_file.place(x = 555, y = 370)
+        self.grid_count.place(x = 570, y = 320)
 
         self.width = 500
         self.height = 500
@@ -49,6 +52,9 @@ class View:
         self.squares = []
         self.cell_width = int(self.width / self.count)
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
+
+    def cell_adjust(self, event):
+        self.controller.cell_count = self.grid_count.get()
     
     def resetted(self):
         self.controller.clearCells()
