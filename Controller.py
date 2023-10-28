@@ -10,7 +10,7 @@ class Controller:
         # properties
         self.clock = pygame.time.Clock()
         self.framerate = 0
-        self.cell_count = 50
+        self.cell_count = 25
         self.active = False
 
         self.model = ModelQ.Model(self.cell_count, self.cell_count)

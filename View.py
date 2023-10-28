@@ -40,7 +40,13 @@ class View:
         self.cell_width = int(self.width / self.count)
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
 
+    
 
+    def on_square_click(self, event):
+        x = int(event.x / self.cell_width)
+        y = int(event.y / self.cell_width)
+        value = self.controller.model.getCell(y, x)
+        self.controller.setCell(y, x, 1 - value)
 
     def create_squares(self):
         """Generates squares within cells."""
@@ -58,11 +64,7 @@ class View:
                 square = self.canvas.create_rectangle(x_position, y_position, x_position + self.cell_width, y_position + self.cell_width, fill = rgb_convert(red, green, blue))
                 self.squares.append(square)
 
-                def on_mouse_click(event):
-                    print(x, y)
-                    self.controller.setCell(x, y, 1 - value)
-
-                self.canvas.tag_bind(square, '<Button-1>', on_mouse_click) 
+                self.canvas.tag_bind(square, '<Button-1>', self.on_square_click) 
         
                 
                     
