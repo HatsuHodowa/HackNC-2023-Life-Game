@@ -43,6 +43,8 @@ class Model:
                 if current > 0.5:
                     if 2.0 <= temp and temp <= 3 :
                         lin[x][y] = 1
+                    elif 1 <= temp and temp < 2.1 :
+                        lin[x][y] = self.p(current - 0.5)
                     else:
                         lin[x][y] = 0
                     '''elif 1 <= temp and temp < 2.1 :

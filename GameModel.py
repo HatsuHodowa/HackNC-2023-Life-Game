@@ -21,9 +21,7 @@ class Model:
         temp = self.pm.li.copy()
         k=0.1
         self.pm.li = self.pm.li - self.om.li*k
-        print(self.pm.li)
         self.om.li = self.om.li - k * temp
-        print(self.om.li)
         self.pm.pall()
         self.om.pall()
     def setCellO(self, i, j, value):
