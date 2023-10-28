@@ -97,7 +97,7 @@ class View:
                 x_position = self.cell_width * x
                 y_position = self.cell_width * y
 
-                opponent_value = self.controller.model.getCellO(x, y)
+                opponent_value = self.controller.model.getCellO(y, x)
 
                 red = int(255 * opponent_value)
                 green = 0
