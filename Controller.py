@@ -14,6 +14,11 @@ class Controller:
         self.model = Model.Model(self.cell_count, self.cell_count)
         self.view = View.View(self, self.cell_count)
 
+        # setting initial configuration for testing
+        self.model.setCell(5, 5, 1)
+        self.model.setCell(5, 6, 1)
+        self.model.setCell(5, 7, 1)
+
         # running update loop
         while True:
 
