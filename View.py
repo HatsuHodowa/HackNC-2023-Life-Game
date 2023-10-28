@@ -45,8 +45,8 @@ class View:
         
 
         for line in range(0, self.width, int(self.cell_width)):
-            self.canvas.create_line((line, 0), (line, self.height) , fill = "black", tags = "")
-            self.canvas.create_line((0, line), (self.width, line), fill = "black", tag = "")
+            self.canvas.create_line((line, 0), (line, self.height) , fill = "grey", tags = "")
+            self.canvas.create_line((0, line), (self.width, line), fill = "grey", tag = "")
         
         self.canvas.grid(row = 0, column = 0)
 
