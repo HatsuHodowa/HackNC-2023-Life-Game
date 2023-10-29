@@ -15,9 +15,9 @@ class SimulationView:
         
         self.essential_gui(controller, count)
 
-        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 1, width = 15, command = self.resetted)
-        input_file = tk.Button(self.window, text = "Input Configuration", font = font, height = 1, width = 15, command = self.upload_file)
-        save_config = tk.Button(self.window, text = "Save Configuration", font = font, height = 1, width = 15, command = self.controller.saveConfiguration)
+        reset = tk.Button(self.window, text = "Clear Grid", font = self.font, height = 1, width = 15, command = self.resetted)
+        input_file = tk.Button(self.window, text = "Input Configuration", font = self.font, height = 1, width = 15, command = self.upload_file)
+        save_config = tk.Button(self.window, text = "Save Configuration", font = self.font, height = 1, width = 15, command = self.controller.saveConfiguration)
         reset.place(x = 555, y = 170)
         save_config.place(x = 555, y = 420)
         input_file.place(x = 555, y = 370)
@@ -30,20 +30,20 @@ class SimulationView:
         self.window.title("Quantum Life Battles")
         self.window.geometry("750x500")
 
-        font = ('Helvetica', 14, "bold")
+        self.font = ('Helvetica', 14, "bold")
 
-        self.status = tk.Label(self.window, text = "Status: Stopped", font = font)
-        speedlabel = tk.Label(self.window, text = "Speed Slider", font = font)
-        zoomlabel = tk.Label(self.window, text = "Zoom Slider", font = font)
-        back_button = tk.Button(self.window, text = "Back", font = font, height = 1, width = 15, command = self.back_to_menu)
+        self.status = tk.Label(self.window, text = "Status: Stopped", font = self.font)
+        speedlabel = tk.Label(self.window, text = "Speed Slider", font = self.font)
+        zoomlabel = tk.Label(self.window, text = "Zoom Slider", font = self.font)
+        back_button = tk.Button(self.window, text = "Back", font = self.font, height = 1, width = 15, command = self.back_to_menu)
         
         self.grid_count = tk.Scale(self.window, from_ = 1, to = self.controller.cell_count, command = self.cell_adjust, orient = "horizontal")
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
         self.grid_count.place(x = 570, y = 300)
         back_button.place(anchor = "center", x = 630, rely = 0.95)
 
-        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 1, width = 15, command = self.started)
-        stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 1, width = 15, command = self.stopped)
+        start = tk.Button(self.window, text = "Start Simulation", font = self.font, height = 1, width = 15, command = self.started)
+        stop = tk.Button(self.window, text = "Stop Simulation", font = self.font, height = 1, width = 15, command = self.stopped)
 
         self.status.place(x = 575, y = 10)
         start.place(x = 555, y = 50)
