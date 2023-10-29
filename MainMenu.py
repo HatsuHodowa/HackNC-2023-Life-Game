@@ -19,7 +19,7 @@ class MainMenu:
         self.window.geometry("750x500")
 
         # creates video
-        video_label = tk.Label(self.window, height = 50, width = 50)
+        video_label = tk.Label(self.window, bg = "gray")
         video_label.pack()
         curr_path = os.path.dirname(__file__)
         video_path = curr_path + "\\Assets\\menu_video.mp4"
