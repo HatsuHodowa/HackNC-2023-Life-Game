@@ -16,7 +16,7 @@ class SimulationController:
         self.menu = menu
 
         # modules
-        self.setModules(self)
+        self.setModules()
 
         # looping update
         self.last_physics_update = time.time()
