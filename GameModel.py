@@ -20,7 +20,7 @@ class Model:
         self.pm.cellUpdate()
         self.om.cellUpdate()
         temp = self.pm.li.copy()
-        k=0.05
+        k=0.02
         self.pm.li = self.pm.li - np.square(self.om.li)*k
         self.om.li = self.om.li - k * np.square(temp)
         self.pm.pall()
