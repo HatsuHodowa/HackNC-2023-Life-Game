@@ -21,9 +21,7 @@ class MainMenu:
         # creates video
         video_label = tk.Label(self.window, bg = "gray")
         video_label.pack()
-        curr_path = os.path.dirname(__file__)
-        video_path = curr_path + "\\Assets\\menu_video.mp4"
-        video_player = video.tkvideo(video_path, video_label, loop = 1, size = (750, 750))
+        video_player = video.tkvideo("menu_video.mp4", video_label, loop = 1, size = (750, 750))
         video_player.play()
 
         # creating interface
