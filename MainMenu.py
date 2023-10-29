@@ -2,6 +2,7 @@ import tkinter as tk
 import SimulationController
 import ChallengeController
 import tkvideo as video
+import os
 
 class MainMenu:
 
@@ -15,6 +16,16 @@ class MainMenu:
         self.window.resizable(False, False)
         self.window.title("Quame of Life")
         self.window.geometry("750x500")
+
+        # creates video
+        video_label = tk.Label(self.window)
+        video_label.pack()
+        curr_path = os.path.dirname(__file__)
+        video_path = curr_path + "\\Assets\\menu_video.mp4"
+        video_player = video.tkvideo(video_path, video_label, loop = 1, size = (750, 750))
+        video_player.play()
+
+        # creating interface
         big_font = ('Helvetica', 50, 'bold')
         mid_font = ('Helvetica', 30, 'bold')
         title = tk.Label(self.window, text = "Quame of Life", font = big_font)
@@ -24,10 +35,6 @@ class MainMenu:
         title.place(anchor= "center", relx = 0.5, rely = 0.3)
         sandbox.place(anchor = "center", relx = 0.5, rely = 0.5)
         challenge.place(anchor = "center", relx = 0.5, rely = 0.65)
-
-        #creates video
-        video_player = video.tkvideo("", self.window, loop = 4, size = (700, 500))
-        video_player.play
         
         # mainloop
         self.window.mainloop()
