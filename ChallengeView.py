@@ -8,6 +8,7 @@ class ChallengeView(SimulationView.SimulationView):
     def __init__(self, controller, count):
         super().essential_gui(controller, count)
         
+        self.window.title("Game of Life Challenges")
         self.canvas.configure(background = "grey")
         self.font = ("Helvetica", 30, "bold")
         self.red_score = tk.Label(self.window, font = self.font, text = "0.0", fg = "red", bg = "white")
@@ -15,8 +16,8 @@ class ChallengeView(SimulationView.SimulationView):
         self.free_boxes = tk.Label(self.window, font = self.font, text = str(self.controller.current_blocks))
         self.load_level.config(text = "Load Level")
 
-        self.red_score.place(x = 570, y = 150)
-        self.blue_score.place(x = 630, y = 150)
+        self.red_score.place(x = 560, y = 150)
+        self.blue_score.place(x = 640, y = 150)
         self.free_boxes.place(x = 700, y = 200)
 
 

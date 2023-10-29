@@ -59,7 +59,7 @@ class SimulationView:
         self.count = count
         self.squares = []
         self.cell_width = int(self.width / self.count)
-        self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
+        self.canvas = tk.Canvas(self.window, background = "gray", width = self.width, height = self.height)
         self.canvas.bind("<ButtonPress-1>", self.scroll_start)
         self.canvas.bind("<B1-Motion>", self.scroll_move)
 
