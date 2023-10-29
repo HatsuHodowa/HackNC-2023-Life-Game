@@ -29,9 +29,6 @@ class ChallengeView(SimulationView.SimulationView):
         self.red_score.config(text = str(controller.opponent_points))
         self.blue_score.config(text = str(controller.player_points))
 
-    def upload_file(self):
-        """Allows the user to upload level presets to the grid."""
-        self.controller.loadConfiguration(self.controller.model.om, filedialog.askopenfilename(initialdir="/LevelData"))
 
 
 

@@ -12,7 +12,7 @@ class MainMenu:
         # creating window
         self.window = tk.Tk()
         self.window.resizable(False, False)
-        self.window.title("Quantum Life Battles")
+        self.window.title("Game of Life")
         self.window.geometry("750x500")
         big_font = ('Helvetica', 50, 'bold')
         mid_font = ('Helvetica', 30, 'bold')
