@@ -27,11 +27,12 @@ class ChallengeController(SimulationController.SimulationController):
             for x, value in enumerate(row):
                 self.opponent_points += value
 
-        # printing point scores
-        print(self.player_points, self.opponent_points)
+        # rounding score values
+        self.player_points = round(self.player_points, 1)
+        self.opponent_points = round(self.opponent_points, 1)
 
         # updating the challenge view
-        self.view.update_scores()
+        self.view.update_score()
 
     def onCellUpdate(self):
         self.updatePoints()
