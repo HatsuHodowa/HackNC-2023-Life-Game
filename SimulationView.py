@@ -45,11 +45,11 @@ class SimulationView:
         self.load_level.place(x = 555, y = 370)
 
 
-        self.zoom_reset = tk.Button(self.window, text = "Reset Zoom", height = 1, width = 1, command = self.reset_position)
+        self.zoom_reset = tk.Button(self.window, text = " ", height = 1, width = 1, command = self.reset_position)
         start = tk.Button(self.window, text = "Start Simulation", font = self.font, height = 1, width = 15, command = self.started)
         stop = tk.Button(self.window, text = "Stop Simulation", font = self.font, height = 1, width = 15, command = self.stopped)
 
-        self.zoom_reset.place(x = 585, y = 240)
+        self.zoom_reset.place(x = 670, y = 312)
         self.status.place(x = 575, y = 10)
         start.place(x = 555, y = 50)
         stop.place(x = 555, y = 110)
@@ -57,7 +57,6 @@ class SimulationView:
         speedlabel.place(x = 575, y = 220)
         zoomlabel.place(x = 575, y = 280)
 
-        
 
         self.width = 500
         self.height = 500
