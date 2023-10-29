@@ -30,5 +30,8 @@ class ChallengeController(SimulationController.SimulationController):
         # printing point scores
         print(self.player_points, self.opponent_points)
 
+        # updating the challenge view
+        self.view.update_scores()
+
     def onCellUpdate(self):
         self.updatePoints()
