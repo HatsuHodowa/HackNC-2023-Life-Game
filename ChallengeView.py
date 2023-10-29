@@ -1,5 +1,6 @@
 import SimulationView
 import tkinter as tk
+from tkinter import filedialog
 
 class ChallengeView(SimulationView.SimulationView):
 
@@ -13,6 +14,7 @@ class ChallengeView(SimulationView.SimulationView):
         self.red_score = tk.Label(self.window, font = self.font, text = "0.0", fg = "red", bg = "white")
         self.blue_score = tk.Label(self.window, font = self.font, text = "0.0", fg = "blue", bg = "white")
         self.free_boxes = tk.Label(self.window, font = self.font, text = str(self.controller.current_blocks))
+        self.load_level.config(text = "Load Level")
 
 
         scroll.place(x = 555, y = 400)
@@ -27,6 +29,9 @@ class ChallengeView(SimulationView.SimulationView):
         self.red_score.config(text = str(controller.opponent_points))
         self.blue_score.config(text = str(controller.player_points))
 
+    def upload_file(self):
+        """Allows the user to upload level presets to the grid."""
+        self.controller.loadConfiguration(self.controller.model.om, filedialog.askopenfilename(initialdir="/LevelData"))
 
 
 

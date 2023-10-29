@@ -16,7 +16,6 @@ class SimulationView:
         self.essential_gui(controller, count)
 
         reset = tk.Button(self.window, text = "Clear Grid", font = self.font, height = 1, width = 15, command = self.resetted)
-        input_file = tk.Button(self.window, text = "Input Configuration", font = self.font, height = 1, width = 15, command = self.upload_file)
         save_config = tk.Button(self.window, text = "Save Configuration", font = self.font, height = 1, width = 15, command = self.controller.saveConfiguration)
         reset.place(x = 555, y = 170)
         save_config.place(x = 555, y = 420)
@@ -31,7 +30,7 @@ class SimulationView:
 
         self.font = ('Helvetica', 14, "bold")
 
-        load_level = tk.Button(self.window, text = "Input Configuration", font = self.font, height = 1, width = 15, command = self.upload_file)
+        self.load_level = tk.Button(self.window, text = "Load Configuration", font = self.font, height = 1, width = 15, command = self.upload_file)
         self.status = tk.Label(self.window, text = "Status: Stopped", font = self.font)
         speedlabel = tk.Label(self.window, text = "Speed Slider", font = self.font)
         zoomlabel = tk.Label(self.window, text = "Zoom Slider", font = self.font)
@@ -41,7 +40,7 @@ class SimulationView:
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
         self.grid_count.place(x = 570, y = 300)
         back_button.place(anchor = "center", x = 630, rely = 0.95)
-        load_level.place(x = 555, y = 370)
+        self.load_level.place(x = 555, y = 370)
 
 
         start = tk.Button(self.window, text = "Start Simulation", font = self.font, height = 1, width = 15, command = self.started)
