@@ -13,6 +13,7 @@ class SimulationController:
         self.framerate = 5
         self.cell_count = 15
         self.active = False
+        self.simulation_active = True
         self.menu = menu
 
         # modules
@@ -20,8 +21,14 @@ class SimulationController:
 
         # looping update
         self.last_physics_update = time.time()
-        while True:
+        while self.simulation_active:
             self.update()
+
+    def close(self):
+        self.simulation_active = False
+        self.clearCells()
+        self.stop()
+        self.view.window.destroy()
 
     def setModules(self):
         self.model = GameModel.Model(self.cell_count, self.cell_count)

@@ -63,8 +63,8 @@ class SimulationView:
         self.canvas.bind("<B1-Motion>", self.scroll_move)
 
     def back_to_menu(self):
-        self.window.destroy()
         self.controller.menu.open_menu()
+        self.controller.close()
 
     def scroll_start(self, event):
         """Starts the panning movement by taking in initial x and y coordinates."""

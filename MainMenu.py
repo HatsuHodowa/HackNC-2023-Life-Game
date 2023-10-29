@@ -29,10 +29,11 @@ class MainMenu:
         self.window.mainloop()
 
     def open_menu(self):
-        pass
+        print('open menu')
+        self.window.wm_state("normal")
 
     def close_menu(self):
-        pass
+        self.window.wm_state("iconic")
 
     def to_simulation(self):
         self.close_menu()
