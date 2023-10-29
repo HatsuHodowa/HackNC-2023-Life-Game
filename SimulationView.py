@@ -7,7 +7,7 @@ def rgb_convert(red, green, blue):
     return "#{:02x}{:02x}{:02x}".format(red, green, blue)
 
 
-class View:
+class SimulationView:
 
 
     def __init__(self, controller, count):
@@ -60,8 +60,7 @@ class View:
 
     def back_to_menu(self):
         self.window.destroy()
-        import MainMenu
-        
+        self.controller.menu.open_menu()
 
     def scroll_start(self, event):
         """Starts the panning movement by taking in initial x and y coordinates."""

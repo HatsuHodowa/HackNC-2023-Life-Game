@@ -2,21 +2,22 @@ import time
 import Model
 import ModelQ
 import GameModel
-import View
+import SimulationView
 import datetime
 from tkinter import filedialog
 
-class Controller:
-    def __init__(self):
+class SimulationController:
+    def __init__(self, menu):
 
         # properties
         self.framerate = 5
         self.cell_count = 15
         self.active = False
+        self.menu = menu
 
         # modules
         self.model = GameModel.Model(self.cell_count, self.cell_count)
-        self.view = View.View(self, self.cell_count)
+        self.view = SimulationView.SimulationView(self, self.cell_count)
 
         # looping update
         self.last_physics_update = time.time()
@@ -73,6 +74,3 @@ class Controller:
         # updating display
         self.view.update()
         self.view.window.update()
-
-# creating controller for testing
-control = Controller()
