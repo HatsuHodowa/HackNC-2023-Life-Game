@@ -28,8 +28,8 @@ class MainMenu:
         big_font = ('Helvetica', 50, 'bold')
         mid_font = ('Helvetica', 30, 'bold')
         title = tk.Label(self.window, text = "Quame of Life", font = big_font, fg = "white", bg = "#2a2a2a")
-        sandbox = tk.Button(self.window, text = "Sandbox Mode", font = mid_font, command = self.to_simulation, fg = "#666666", bg = "#191919")
-        challenge = tk.Button(self.window, text = "Challenge Mode", font = mid_font, command = self.to_challenge, fg = "#666666", bg = "#191919")
+        sandbox = tk.Button(self.window, text = "Sandbox Mode", font = mid_font, command = self.to_simulation, fg = "gray", bg = "#191919")
+        challenge = tk.Button(self.window, text = "Challenge Mode", font = mid_font, command = self.to_challenge, fg = "gray", bg = "#191919")
 
         title.place(anchor= "center", relx = 0.5, rely = 0.3)
         sandbox.place(anchor = "center", relx = 0.5, rely = 0.5)
