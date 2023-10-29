@@ -5,7 +5,7 @@ This is a game inspired by Conway's game of life, but using the time-dependent S
 Using python 3.12, run the MainMenu.py script, as it is the central script that connects everything else. Through the main menu, you can access the Sandbox mode, the Challenge mode, as well as change the grid size.
 
 ### Dependencies
-The modules you will need to run this are as follows:
+The packages you will need to download in order to run this are as follows:
 
 - numpy
 - tkinter
