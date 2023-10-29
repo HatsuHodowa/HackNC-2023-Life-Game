@@ -24,9 +24,9 @@ class Model:
 
         k=0.02 + self.c / 1e5
         self.c += 1
-        print(k)
-        print(sum(sum(self.pm.li)))
-        print(sum(sum(self.om.li)))
+        #print(k)
+        #print(sum(sum(self.pm.li)))
+        #print(sum(sum(self.om.li)))
         self.pm.li = self.pm.li - np.square(self.om.li)*k
         self.om.li = self.om.li - k * np.square(temp)
         self.pm.pall()
