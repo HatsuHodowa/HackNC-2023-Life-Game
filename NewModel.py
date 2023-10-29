@@ -6,7 +6,6 @@ import Model
 class Model(Model.Model):
     def __init__(self, width, height):
         super().__init__(width, height)
-
         self.wf = np.array([[0.0]*height] * width)
     def bounded(self, x, y, vect):
         if self.valid(x, y):

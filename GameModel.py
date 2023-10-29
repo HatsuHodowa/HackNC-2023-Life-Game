@@ -11,6 +11,16 @@ class Model:
         self.om = NewModel.Model(width, height)
         self.c = 0
 
+    def resetValues(self):
+        self.pm.li = np.array([[0.0]*self.height] * self.width)
+        self.om.li = np.array([[0.0]*self.height] * self.width)
+
+        if hasattr(self.pm, "wf"):
+            self.pm.wf = np.array([[0.0]*self.height] * self.width)
+
+        if hasattr(self.om, "wf"):
+            self.om.wf = np.array([[0.0]*self.height] * self.width)
+
     def getCellO(self, i, j):
         return self.om.getCell(i, j)
     def getCellP(self, i, j):
