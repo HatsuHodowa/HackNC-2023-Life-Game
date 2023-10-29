@@ -12,11 +12,11 @@ class MainMenu:
         # creating window
         self.window = tk.Tk()
         self.window.resizable(False, False)
-        self.window.title("Game of Life")
+        self.window.title("Quame of Life")
         self.window.geometry("750x500")
         big_font = ('Helvetica', 50, 'bold')
         mid_font = ('Helvetica', 30, 'bold')
-        title = tk.Label(self.window, text = "Quantum Life Battles", font = big_font)
+        title = tk.Label(self.window, text = "Quame of Life", font = big_font)
         sandbox = tk.Button(self.window, text = "Sandbox Mode", font = mid_font, command = self.to_simulation)
         challenge = tk.Button(self.window, text = "Challenge Mode", font = mid_font, command = self.to_challenge)
 

@@ -27,7 +27,7 @@ class SimulationView:
 
         self.window = tk.Tk()
         self.window.resizable(False, False)
-        self.window.title("Game of Life Simulation")
+        self.window.title("Quame of Life: Simulation")
         self.window.geometry("750x500")
 
         self.font = ('Helvetica', 14, "bold")
