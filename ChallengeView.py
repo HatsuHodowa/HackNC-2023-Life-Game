@@ -34,7 +34,6 @@ class ChallengeView(SimulationView.SimulationView):
     def upload_file(self):
         """Allows the player to upload level to game."""
         self.win.place_forget()
-        super().resetted()
         super().upload_file()
         self.update_max_boxes()
 

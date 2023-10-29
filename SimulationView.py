@@ -106,8 +106,8 @@ class SimulationView:
 
     def resetted(self):
         """Resets the grid."""
-        self.controller.clearCells()
         self.controller.stop()
+        self.controller.clearCells()
         self.status.config(text = "Status: Stopped")
 
 
@@ -125,7 +125,7 @@ class SimulationView:
 
     def upload_file(self):
         """Allows the user to upload level presets to the grid."""
-        self.controller.model.resetValues()
+        self.resetted()
         self.controller.simulation_started = False
         self.controller.loadConfiguration(self.controller.model.om, filedialog.askopenfilename(initialdir="/LevelData"))
 
