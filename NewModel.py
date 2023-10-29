@@ -20,7 +20,7 @@ class Model(Model.Model):
         for x in range(self.width):
             for y in range(self.height):
                 vect2[x][y] += self.bounded(x-1, y, vect) + self.bounded(x+1, y, vect) -4*self.bounded(x, y, vect) +self.bounded(x, y+1, vect) + self.bounded(x, y-1, vect)
-        return vect2 * i * 0.5 - 0.1*vect2**3
+        return vect2 * i * 0.5 - 0.03*vect2**3
     def cellUpdate(self):
         lin = np.array([[0.0]*self.height] * self.width)
         vect = np.array([[0.0]*self.height] * self.width)

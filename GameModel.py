@@ -20,9 +20,9 @@ class Model:
         self.pm.cellUpdate()
         self.om.cellUpdate()
         temp = self.pm.li.copy()
-        k=0.5
-        self.pm.li = self.pm.li - self.om.li*k
-        self.om.li = self.om.li - k * temp
+        k=0.05
+        self.pm.li = self.pm.li - np.square(self.om.li)*k
+        self.om.li = self.om.li - k * np.square(temp)
         self.pm.pall()
         self.om.pall()
     def setCellO(self, i, j, value):

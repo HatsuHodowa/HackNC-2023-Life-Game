@@ -110,9 +110,13 @@ class View:
 
                 opponent_value = self.controller.model.getCellO(y, x)
 
-                red = int(255 * opponent_value)
+                red = int(50+205 * opponent_value)
+                if opponent_value == 0:
+                    red = 0
                 green = 0
-                blue = int(255 * value)
+                blue = int(50+205 * value)
+                if value == 0:
+                    blue = 0
                 square = self.canvas.create_rectangle(x_position, y_position, x_position + self.cell_width, y_position + self.cell_width, fill = rgb_convert(red, green, blue))
                 self.squares.append(square)
 
