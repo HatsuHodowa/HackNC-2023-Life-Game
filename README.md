@@ -7,9 +7,9 @@ Using python 3.12, run the MainMenu.py script, as it is the central script that 
 ### Dependencies
 The packages you will need to download in order to run this are as follows:
 
-- numpy
-- tkinter
-- tkvideo
+- numpy: pip install numpy
+- tkinter: pip install tk
+- tkvideo: pip install tkvideo
 
 ## Saving / Loading Configurations
 The Sandbox mode gives you the ability to save and load configurations that you create. When you save a configuration, it saves the data for the blue squares, but when you load one, it loads them into the red squares, allowing you to create your own challenge levels, or take on challenge levels without the block limits.
