@@ -37,7 +37,7 @@ class MainMenu:
         self.window.destroy()
     
     def to_simulation(self):
-        self.window.destroy()
+        #self.window.destroy()
         self.current_controller = SimulationController.SimulationController(self)
     
 x = MainMenu()
