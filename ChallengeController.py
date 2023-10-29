@@ -31,13 +31,12 @@ class ChallengeController(SimulationController.SimulationController):
         self.simulation_started = True
 
         # updating the point scores
-        self.player_points = round(self.calculate_points(self.model.pm), 2)
-        self.opponent_points = round(self.calculate_points(self.model.om), 2)
+        self.player_points = self.calculate_points(self.model.pm)
+        self.opponent_points = self.calculate_points(self.model.om)
 
         # updating the challenge view
         self.view.update_score()
-        self.player_points = round(self.calculate_points(self.model.pm), 4)
-        self.opponent_points = round(self.calculate_points(self.model.om), 4)
+        
         # checking who won
         winner = None
         if self.opponent_points == 0:
