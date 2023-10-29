@@ -175,7 +175,7 @@ class SimulationView:
     def create_grid(self):
         """Creates grids within the UI"""
         line_length = self.controller.cell_count * self.cell_width
-        for line in range(0, self.width, int(self.cell_width)):
+        for line in range(0, line_length, int(self.cell_width)):
             a= self.canvas.create_line((line, 0), (line, line_length) , fill = "grey", tags = "")
             b = self.canvas.create_line((0, line), (line_length, line), fill = "grey", tag = "")
             self.squares.append(a)
