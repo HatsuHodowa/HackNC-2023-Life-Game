@@ -12,6 +12,17 @@ class SimulationView:
 
     def __init__(self, controller, count):
         """Main function of this class."""
+        
+        self.essential_gui(controller, count)
+
+        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 1, width = 15, command = self.resetted)
+        input_file = tk.Button(self.window, text = "Input Configuration", font = font, height = 1, width = 15, command = self.upload_file)
+        save_config = tk.Button(self.window, text = "Save Configuration", font = font, height = 1, width = 15, command = self.controller.saveConfiguration)
+        reset.place(x = 555, y = 170)
+        save_config.place(x = 555, y = 420)
+        input_file.place(x = 555, y = 370)
+
+    def essential_gui(self, controller, count):
         self.controller = controller
 
         self.window = tk.Tk()
@@ -24,29 +35,22 @@ class SimulationView:
         self.status = tk.Label(self.window, text = "Status: Stopped", font = font)
         speedlabel = tk.Label(self.window, text = "Speed Slider", font = font)
         zoomlabel = tk.Label(self.window, text = "Zoom Slider", font = font)
+        back_button = tk.Button(self.window, text = "Back", font = font, height = 1, width = 15, command = self.back_to_menu)
         
         self.grid_count = tk.Scale(self.window, from_ = 1, to = self.controller.cell_count, command = self.cell_adjust, orient = "horizontal")
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
+        self.grid_count.place(x = 570, y = 300)
+        back_button.place(anchor = "center", x = 630, rely = 0.95)
 
         start = tk.Button(self.window, text = "Start Simulation", font = font, height = 1, width = 15, command = self.started)
         stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 1, width = 15, command = self.stopped)
-        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 1, width = 15, command = self.resetted)
-        input_file = tk.Button(self.window, text = "Input Configuration", font = font, height = 1, width = 15, command = self.upload_file)
-        save_config = tk.Button(self.window, text = "Save Configuration", font = font, height = 1, width = 15, command = self.controller.saveConfiguration)
-        back_button = tk.Button(self.window, text = "Back", font = font, height = 1, width = 15, command = self.back_to_menu)
 
-    
         self.status.place(x = 575, y = 10)
         start.place(x = 555, y = 50)
         stop.place(x = 555, y = 110)
-        reset.place(x = 555, y = 170)
         self.slider.place(x = 570, y = 240)
         speedlabel.place(x = 575, y = 220)
         zoomlabel.place(x = 575, y = 280)
-        save_config.place(x = 555, y = 420)
-        input_file.place(x = 555, y = 370)
-        self.grid_count.place(x = 570, y = 300)
-        back_button.place(anchor = "center", x = 630, rely = 0.95)
 
         self.width = 500
         self.height = 500
