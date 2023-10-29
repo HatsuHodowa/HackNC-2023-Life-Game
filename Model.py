@@ -7,6 +7,9 @@ class Model:
         self.height = height
         self.li = np.array([[0.0]*height] * width)
 
+        # level-specific attributes
+        self.cell_limit = None
+
     def getCell(self, i, j):
         return self.li[i][j]
     def valid(self, i, j):

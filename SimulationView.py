@@ -121,8 +121,9 @@ class SimulationView:
         """Inverts the grid box selected by the user."""
 
         # checking if max squares
-        if hasattr(self.controller.model, "cell_limit") and hasattr(self.controller, "current_blocks"):
-            if self.controller.current_blocks >= self.controller.model.cell_limit:
+        print("cell_limit", self.controller.model.pm.cell_limit)
+        if self.controller.model.pm.cell_limit != None and hasattr(self.controller, "current_blocks"):
+            if self.controller.current_blocks >= self.controller.model.pm.cell_limit:
                 return
 
         # toggling square
