@@ -12,41 +12,46 @@ class SimulationView:
 
     def __init__(self, controller, count):
         """Main function of this class."""
+        
+        self.essential_gui(controller, count)
+
+        reset = tk.Button(self.window, text = "Clear Grid", font = self.font, height = 1, width = 15, command = self.resetted)
+        save_config = tk.Button(self.window, text = "Save Configuration", font = self.font, height = 1, width = 15, command = self.controller.saveConfiguration)
+        reset.place(x = 555, y = 170)
+        save_config.place(x = 555, y = 420)
+        
+    def essential_gui(self, controller, count):
         self.controller = controller
 
         self.window = tk.Tk()
         self.window.resizable(False, False)
-        self.window.title("Quantum Life Battles")
+        self.window.title("Game of Life Simulation")
         self.window.geometry("750x500")
 
-        font = ('Helvetica', 14, "bold")
+        self.font = ('Helvetica', 14, "bold")
 
-        self.status = tk.Label(self.window, text = "Status: Stopped", font = font)
-        speedlabel = tk.Label(self.window, text = "Speed Slider", font = font)
-        zoomlabel = tk.Label(self.window, text = "Zoom Slider", font = font)
+        self.load_level = tk.Button(self.window, text = "Load Configuration", font = self.font, height = 1, width = 15, command = self.upload_file)
+        self.status = tk.Label(self.window, text = "Status: Stopped", font = self.font)
+        speedlabel = tk.Label(self.window, text = "Speed Slider", font = self.font)
+        zoomlabel = tk.Label(self.window, text = "Zoom Slider", font = self.font)
+        back_button = tk.Button(self.window, text = "Back", font = self.font, height = 1, width = 15, command = self.back_to_menu)
         
         self.grid_count = tk.Scale(self.window, from_ = 1, to = self.controller.cell_count, command = self.cell_adjust, orient = "horizontal")
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
+        self.grid_count.place(x = 570, y = 300)
+        back_button.place(anchor = "center", x = 630, rely = 0.95)
+        self.load_level.place(x = 555, y = 370)
 
-        start = tk.Button(self.window, text = "Start Simulation", font = font, height = 1, width = 15, command = self.started)
-        stop = tk.Button(self.window, text = "Stop Simulation", font = font, height = 1, width = 15, command = self.stopped)
-        reset = tk.Button(self.window, text = "Clear Grid", font = font, height = 1, width = 15, command = self.resetted)
-        input_file = tk.Button(self.window, text = "Input Configuration", font = font, height = 1, width = 15, command = self.upload_file)
-        save_config = tk.Button(self.window, text = "Save Configuration", font = font, height = 1, width = 15, command = self.controller.saveConfiguration)
-        back_button = tk.Button(self.window, text = "Back", font = font, height = 1, width = 15, command = self.back_to_menu)
 
-    
+        start = tk.Button(self.window, text = "Start Simulation", font = self.font, height = 1, width = 15, command = self.started)
+        stop = tk.Button(self.window, text = "Stop Simulation", font = self.font, height = 1, width = 15, command = self.stopped)
+
         self.status.place(x = 575, y = 10)
         start.place(x = 555, y = 50)
         stop.place(x = 555, y = 110)
-        reset.place(x = 555, y = 170)
         self.slider.place(x = 570, y = 240)
         speedlabel.place(x = 575, y = 220)
         zoomlabel.place(x = 575, y = 280)
-        save_config.place(x = 555, y = 420)
-        input_file.place(x = 555, y = 370)
-        self.grid_count.place(x = 570, y = 300)
-        back_button.place(anchor = "center", x = 630, rely = 0.95)
 
         self.width = 500
         self.height = 500
@@ -59,8 +64,8 @@ class SimulationView:
         self.canvas.bind("<B1-Motion>", self.scroll_move)
 
     def back_to_menu(self):
-        self.window.destroy()
         self.controller.menu.open_menu()
+        self.controller.close()
 
     def scroll_start(self, event):
         """Starts the panning movement by taking in initial x and y coordinates."""
@@ -104,7 +109,7 @@ class SimulationView:
 
     def upload_file(self):
         """Allows the user to upload level presets to the grid."""
-        self.controller.loadConfiguration(self.controller.model.om, filedialog.askopenfilename(initialdir="/SaveData"))
+        self.controller.loadConfiguration(self.controller.model.om, filedialog.askopenfilename(initialdir="/LevelData"))
 
 
     def change_framerate(self, event):
@@ -114,6 +119,13 @@ class SimulationView:
 
     def on_square_click(self, event):
         """Inverts the grid box selected by the user."""
+
+        # checking if max squares
+        if hasattr(self.controller.model, "cell_limit") and hasattr(self.controller, "current_blocks"):
+            if self.controller.current_blocks >= self.controller.model.cell_limit:
+                return
+
+        # toggling square
         x = int(self.canvas.canvasx(event.x) / self.cell_width)
         y = int(self.canvas.canvasy(event.y) / self.cell_width)
         value = self.controller.model.getCellP(y, x)
