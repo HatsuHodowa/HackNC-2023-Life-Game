@@ -4,6 +4,7 @@ from tkinter import filedialog
 
 
 def rgb_convert(red, green, blue):
+    """Converter of rgb values to hex."""
     return "#{:02x}{:02x}{:02x}".format(red, green, blue)
 
 
@@ -21,6 +22,7 @@ class SimulationView:
         save_config.place(x = 555, y = 420)
         
     def essential_gui(self, controller, count):
+        """Important tools that are required in child classes."""
         self.controller = controller
 
         self.window = tk.Tk()
@@ -64,6 +66,7 @@ class SimulationView:
         self.canvas.bind("<B1-Motion>", self.scroll_move)
 
     def back_to_menu(self):
+        """Returns the user back to the main menu."""
         self.controller.menu.open_menu()
         self.controller.close()
 
