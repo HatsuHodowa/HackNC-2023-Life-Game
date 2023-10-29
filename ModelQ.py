@@ -1,37 +1,10 @@
 import numpy as np
+import Model
+
+class Model(Model.Model):
 
 
-class Model:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-        self.li = np.array([[0.0]*height] * width)
-
-    def getCell(self, i, j):
-        return self.li[i][j]
-    def valid(self, i, j):
-        return i >= 0 and i < self.width and j >= 0  and j < self.height
-    def alive(self, i, j):
-        c = 0
-        for x in range(i-1, i+2):
-            for y in range(j-1, j+2):
-                if self.valid(x, y):
-                    
-                    if (x != i) or (j!= y):
-                        c += self.li[x][y]
-                        
-        return c
-    def p(self,v ):
-        if v < 0:
-            return 0
-        elif v > 1:
-            return 1
-        else:
-            return v
-    def pall(self):
-        for i in range(self.width):
-            for j in range(self.height):
-                self.li[i][j] = self.p(self.li[i][j])
+    
     def cellUpdate(self):
         lin = np.array([[0.0]*self.height] * self.width)
         for x in range(self.width):
@@ -68,22 +41,6 @@ class Model:
                     lin[x][y] = 0
         #print(lin)
         self.li = lin
-    def setCell(self, i, j, value):
-        if self.valid(i, j):
-            self.li[i][j] = value
 
-    def getWidth(self):
-        return self.width
-
-    def getHeight(self):
-        return self.height
-    def printli(self):
-        print(self.li)
-    def print(self):
-        for y in range(self.height):
-            for x in range(self.width): 
-                
-                print(round(self.li[x][y], 1), end="\t")
-            print("")
 
 
