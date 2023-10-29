@@ -12,12 +12,13 @@ class ChallengeView(SimulationView.SimulationView):
         self.font = ("Helvetica", 30, "bold")
         self.red_score = tk.Label(self.window, font = self.font, text = "0.0", fg = "red", bg = "white")
         self.blue_score = tk.Label(self.window, font = self.font, text = "0.0", fg = "blue", bg = "white")
-        self.free_boxes = tk.Label(self.window, text = "")
+        self.free_boxes = tk.Label(self.window, font = self.font, text = str(self.controller.current_blocks))
 
 
         scroll.place(x = 555, y = 400)
         self.red_score.place(x = 570, y = 150)
         self.blue_score.place(x = 630, y = 150)
+        self.free_boxes.place(x = 700, y = 200)
 
 
 
