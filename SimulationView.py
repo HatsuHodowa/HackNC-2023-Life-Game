@@ -118,6 +118,13 @@ class SimulationView:
 
     def on_square_click(self, event):
         """Inverts the grid box selected by the user."""
+
+        # checking if max squares
+        if hasattr(self.controller.model, "cell_limit") and hasattr(self.controller, "current_blocks"):
+            if self.controller.current_blocks >= self.controller.model.cell_limit:
+                return
+
+        # toggling square
         x = int(self.canvas.canvasx(event.x) / self.cell_width)
         y = int(self.canvas.canvasy(event.y) / self.cell_width)
         value = self.controller.model.getCellP(y, x)
