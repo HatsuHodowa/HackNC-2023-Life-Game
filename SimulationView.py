@@ -121,16 +121,20 @@ class SimulationView:
         """Inverts the grid box selected by the user."""
 
         # checking if max squares
-        print("cell_limit", self.controller.model.pm.cell_limit)
-        if self.controller.model.pm.cell_limit != None and hasattr(self.controller, "current_blocks"):
-            if self.controller.current_blocks >= self.controller.model.pm.cell_limit:
-                return
+        has_max = False
+        if self.controller.model.om.cell_limit != None and hasattr(self.controller, "current_blocks"):
+            if self.controller.current_blocks >= self.controller.model.om.cell_limit:
+                has_max = True
 
         # toggling square
         x = int(self.canvas.canvasx(event.x) / self.cell_width)
         y = int(self.canvas.canvasy(event.y) / self.cell_width)
         value = self.controller.model.getCellP(y, x)
-        self.controller.model.setCellP(y, x, 1 - value)
+        
+        if has_max == False:
+            self.controller.model.setCellP(y, x, 1 - value)
+        else:
+            self.controller.model.setCellP(y, x, 0)
 
 
     def create_squares(self):
