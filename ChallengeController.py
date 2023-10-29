@@ -1,6 +1,7 @@
 import SimulationController
 import ChallengeView
 import GameModel
+import time
 
 class ChallengeController(SimulationController.SimulationController):
     def __init__(self, menu):
@@ -35,6 +36,23 @@ class ChallengeController(SimulationController.SimulationController):
 
         # updating the challenge view
         self.view.update_score()
+
+        # checking who won
+        winner = None
+        if self.opponent_points == 0:
+            winner = "player"
+        elif self.player_points == 0:
+            winner = "opponent"
+        
+        if winner != None:
+            self.stop()
+            time.sleep(0.5)
+
+            # displaying winner
+            if winner == "player":
+                self.view.player_win()
+            else:
+                self.view.opponent_win()
 
     def onCellUpdate(self):
         self.updatePoints()

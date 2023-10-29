@@ -123,6 +123,10 @@ class SimulationView:
     def on_square_click(self, event):
         """Inverts the grid box selected by the user."""
 
+        # checking if simulation started
+        if hasattr(self.controller, "simulation_started") and self.controller.simulation_started == True:
+            return
+
         # checking if max squares
         has_max = False
         if self.controller.model.om.cell_limit != None and hasattr(self.controller, "current_blocks"):
