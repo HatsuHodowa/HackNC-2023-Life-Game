@@ -13,12 +13,12 @@ class ChallengeView(SimulationView.SimulationView):
         self.font = ("Helvetica", 30, "bold")
         self.red_score = tk.Label(self.window, font = self.font, text = "0.0", fg = "red", bg = "white")
         self.blue_score = tk.Label(self.window, font = self.font, text = "0.0", fg = "blue", bg = "white")
-        self.free_boxes = tk.Label(self.window, font = self.font, text = str(self.controller.current_blocks))
+        self.free_boxes = tk.Label(self.window, font = ("Helvetica", 15, "bold"), text = f"Placeable Boxes: {str(self.controller.model.om.cell_limit)}")
         self.load_level.config(text = "Load Level")
 
         self.red_score.place(x = 560, y = 150)
         self.blue_score.place(x = 640, y = 150)
-        self.free_boxes.place(x = 700, y = 200)
+        self.free_boxes.place(relx = 0.72, rely = 0.82)
 
 
 
@@ -27,7 +27,9 @@ class ChallengeView(SimulationView.SimulationView):
         self.red_score.config(text = str(controller.opponent_points))
         self.blue_score.config(text = str(controller.player_points))
 
-
+    def upload_file(self):
+        super().resetted()
+        super().upload_file()
 
 
 
