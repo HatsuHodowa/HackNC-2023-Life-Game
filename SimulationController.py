@@ -68,7 +68,6 @@ class SimulationController:
                         name = args[0]
                         value = args[1]
                         setattr(model, name, int(value))
-                        print(name, value)
 
     def start(self):
         self.active = True
