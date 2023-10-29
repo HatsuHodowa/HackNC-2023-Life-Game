@@ -112,6 +112,8 @@ class SimulationView:
 
     def upload_file(self):
         """Allows the user to upload level presets to the grid."""
+        self.controller.model.resetValues()
+        self.controller.simulation_started = False
         self.controller.loadConfiguration(self.controller.model.om, filedialog.askopenfilename(initialdir="/LevelData"))
 
 
