@@ -11,7 +11,7 @@ class SimulationController:
 
         # properties
         self.framerate = 5
-        self.cell_count = 15
+        self.cell_count = menu.current_size
         self.active = False
         self.simulation_active = True
         self.menu = menu

@@ -11,6 +11,7 @@ class MainMenu:
 
         # main properties
         self.current_controller = None
+        self.current_size = 15
 
         # creating window
         self.window = tk.Tk()
@@ -28,13 +29,19 @@ class MainMenu:
         # creating interface
         big_font = ('Helvetica', 50, 'bold')
         mid_font = ('Helvetica', 30, 'bold')
+        small_font = ('Helvetic', 15)
         title = tk.Label(self.window, text = "Quame of Life", font = big_font, fg = "white", bg = "#2a2a2a")
         sandbox = tk.Button(self.window, text = "Sandbox Mode", font = mid_font, command = self.to_simulation, fg = "gray", bg = "#191919")
         challenge = tk.Button(self.window, text = "Challenge Mode", font = mid_font, command = self.to_challenge, fg = "gray", bg = "#191919")
+        size_label = tk.Label(self.window, text = "Grid Size", font = small_font, fg = "white", bg = "#2a2a2a")
+        self.size_scale = tk.Scale(self.window, from_ = 5, to = 50, command = self.configure_size, orient = "horizontal", length = 200, bg = "#191919", font = small_font, fg = "white", troughcolor="gray")
+        self.size_scale.set(15)
 
-        title.place(anchor= "center", relx = 0.5, rely = 0.3)
-        sandbox.place(anchor = "center", relx = 0.5, rely = 0.5)
-        challenge.place(anchor = "center", relx = 0.5, rely = 0.65)
+        title.place(anchor= "center", relx = 0.5, y = 100)
+        sandbox.place(anchor = "center", relx = 0.5, y = 200)
+        challenge.place(anchor = "center", relx = 0.5, y = 300)
+        size_label.place(anchor = "center", relx = 0.5, y = 370)
+        self.size_scale.place(anchor = "center", relx = 0.5, y = 420)
         
         # mainloop
         self.window.mainloop()
@@ -46,6 +53,9 @@ class MainMenu:
     def close_menu(self):
         """Minimizes the ui portal for the menu."""
         self.window.wm_state("iconic")
+
+    def configure_size(self, event):
+        self.current_size = self.size_scale.get()
 
     def to_simulation(self):
         """Opens an instance of the simulation mode of the game."""
