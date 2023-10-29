@@ -10,7 +10,7 @@ class ChallengeView(SimulationView.SimulationView):
 
         super().essential_gui(controller, count)
         
-        self.window.title("Quame of Life Challenges")
+        self.window.title("Quame of Life: Challenges")
         self.canvas.configure(background = "grey")
         self.font = ("Helvetica", 30, "bold")
         self.red_score = tk.Label(self.window, font = self.font, text = "0.0", fg = "red", bg = "white")
@@ -27,8 +27,8 @@ class ChallengeView(SimulationView.SimulationView):
 
     def update_score(self):
         controller = self.controller
-        self.red_score.config(text = str(controller.opponent_points))
-        self.blue_score.config(text = str(controller.player_points))
+        self.red_score.config(text = str(round(controller.opponent_points, 2)))
+        self.blue_score.config(text = str(round(controller.player_points, 2)))
 
     def upload_file(self):
         self.win.place_forget()
