@@ -77,6 +77,7 @@ class SimulationView:
     def reset_position(self):
         self.canvas.scan_dragto(0, 0)
         self.controller.updateCellCount(0)
+        self.grid_count.set(0)
 
     def scroll_start(self, event):
         """Starts the panning movement by taking in initial x and y coordinates."""
