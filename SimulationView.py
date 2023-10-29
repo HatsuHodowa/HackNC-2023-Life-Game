@@ -19,7 +19,7 @@ class SimulationView:
         reset = tk.Button(self.window, text = "Clear Grid", font = self.font, height = 1, width = 15, command = self.resetted)
         save_config = tk.Button(self.window, text = "Save Configuration", font = self.font, height = 1, width = 15, command = self.controller.saveConfiguration)
         reset.place(x = 555, y = 170)
-        save_config.place(x = 555, y = 420)
+        save_config.place(x = 555, y = 400)
         
     def essential_gui(self, controller, count):
         """Important tools that are required in child classes."""
@@ -41,8 +41,8 @@ class SimulationView:
         self.grid_count = tk.Scale(self.window, from_ = 1, to = self.controller.cell_count, command = self.cell_adjust, orient = "horizontal")
         self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
         self.grid_count.place(x = 570, y = 300)
-        back_button.place(anchor = "center", x = 630, rely = 0.95)
-        self.load_level.place(x = 555, y = 370)
+        back_button.place(x = 555, y = 450)
+        self.load_level.place(x = 555, y = 350)
 
 
         self.zoom_reset = tk.Button(self.window, text = " ", height = 1, width = 1, command = self.reset_position)
