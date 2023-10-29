@@ -1,6 +1,7 @@
 import tkinter as tk
 import SimulationController
 import ChallengeController
+import tkvideo as video
 
 class MainMenu:
 
@@ -23,6 +24,10 @@ class MainMenu:
         title.place(anchor= "center", relx = 0.5, rely = 0.3)
         sandbox.place(anchor = "center", relx = 0.5, rely = 0.5)
         challenge.place(anchor = "center", relx = 0.5, rely = 0.65)
+
+        #creates video
+        video_player = video.tkvideo("", self.window, loop = 4, size = (700, 500))
+        video_player.play
         
         # mainloop
         self.window.mainloop()
