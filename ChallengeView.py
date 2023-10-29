@@ -4,6 +4,8 @@ class ChallengeView(SimulationView.SimulationView):
 
 
     def __init__(self, controller, count):
-        pass
+        super().essential_gui(controller, count)
+        
+        
 
     
