@@ -55,7 +55,11 @@ class View:
         self.squares = []
         self.cell_width = int(self.width / self.count)
         self.canvas = tk.Canvas(self.window, background = "white", width = self.width, height = self.height)
+        self.canvas.bind("<ButtonPress-1>", self.scroll_start)
         self.canvas.bind("<B1-Motion>", self.scroll_move)
+
+    def scroll_start(self, event):
+        self.canvas.scan_mark(event.x, event.y)
 
     def scroll_move(self, event):
         self.canvas.scan_dragto(event.x, event.y, gain = 1)
@@ -63,7 +67,7 @@ class View:
     def update_cell_count(self, count):
         self.count = self.controller.cell_count - count
         self.cell_width = int(self.width / self.count)
-        
+    
 
     def cell_adjust(self, event):
         self.controller.updateCellCount(self.grid_count.get())
@@ -88,8 +92,8 @@ class View:
         self.controller.framerate = self.slider.get()
 
     def on_square_click(self, event):
-        x = int(event.x / self.cell_width)
-        y = int(event.y / self.cell_width)
+        x = int(self.canvas.canvasx(event.x) / self.cell_width)
+        y = int(self.canvas.canvasy(event.y) / self.cell_width)
         value = self.controller.model.getCellP(y, x)
         self.controller.model.setCellP(y, x, 1 - value)
 
