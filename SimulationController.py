@@ -50,13 +50,24 @@ class SimulationController:
 
     def loadConfiguration(self, model, file):
         with open(file, "r") as f:
-            values = f.read().split(",")
+            lines = f.readlines()
+            values = lines[0].split(",")
             current_index = 0
 
+            # setting cell values
             for x, row in enumerate(model.li):
                 for y, value in enumerate(row):
                     model.setCell(x, y, values[current_index])
                     current_index += 1
+
+            # adding model attributes from load data
+            for i, line in enumerate(lines):
+                if i != 0:
+                    args = line.split("=")
+                    if len(args) == 2:
+                        name = args[0]
+                        value = args[1]
+                        setattr(model, name, int(value))
 
     def start(self):
         self.active = True
