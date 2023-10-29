@@ -77,10 +77,7 @@ class SimulationController:
         self.active = False
 
     def clearCells(self):
-        for i, row in enumerate(self.model.pm.li):
-            for j, row in enumerate(row):
-                self.model.setCellO(i, j, 0)
-                self.model.setCellP(i, j, 0)
+        self.model.resetValues()
 
     def onCellUpdate(self):
         pass
