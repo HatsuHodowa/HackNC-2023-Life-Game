@@ -21,7 +21,7 @@ class ChallengeView(SimulationView.SimulationView):
 
         self.red_score.place(x = 560, y = 150)
         self.blue_score.place(x = 640, y = 150)
-        self.free_boxes.place(relx = 0.67, rely = 0.82)
+        self.free_boxes.place(x = 555, y = 390)
 
 
 
