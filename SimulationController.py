@@ -40,7 +40,7 @@ class SimulationController:
 
     def saveConfiguration(self):
         config = self.model.pm.li
-        file = filedialog.asksaveasfilename(initialdir="/SaveData", filetypes=[("Text file", "*.txt")])
+        file = filedialog.asksaveasfilename(initialdir="/LevelData", filetypes=[("Text file", "*.txt")])
 
         with open(file, "w") as f:
             for row in config:

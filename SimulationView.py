@@ -109,7 +109,7 @@ class SimulationView:
 
     def upload_file(self):
         """Allows the user to upload level presets to the grid."""
-        self.controller.loadConfiguration(self.controller.model.om, filedialog.askopenfilename(initialdir="/SaveData"))
+        self.controller.loadConfiguration(self.controller.model.om, filedialog.askopenfilename(initialdir="/LevelData"))
 
 
     def change_framerate(self, event):
