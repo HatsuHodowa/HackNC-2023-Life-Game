@@ -33,7 +33,9 @@ class ChallengeView(SimulationView.SimulationView):
         self.update_max_boxes()
 
     def update_max_boxes(self):
-        self.free_boxes.config(text = f"Placeable Boxes: {str(self.controller.model.om.cell_limit)}")
+        if self.controller.model.om.cell_limit != None:
+            cells_left = self.controller.model.om.cell_limit - self.controller.current_blocks
+            self.free_boxes.config(text = f"Placeable Boxes: {str(cells_left)}")
 
 
 
