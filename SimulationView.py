@@ -75,7 +75,14 @@ class SimulationView:
         self.controller.close()
 
     def reset_position(self):
-        self.canvas.scan_dragto(0, 0)
+        # resetting pan
+        origX = self.canvas.xview()[0]
+        origY = self.canvas.yview()[0]
+
+        self.canvas.xview_moveto(origX)
+        self.canvas.yview_moveto(origY)
+
+        # resetting scroll
         self.controller.updateCellCount(0)
         self.grid_count.set(0)
 
