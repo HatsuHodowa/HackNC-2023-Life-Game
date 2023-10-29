@@ -13,7 +13,6 @@ class SimulationView:
 
     def __init__(self, controller, count):
         """Main function of this class."""
-        
         self.essential_gui(controller, count)
 
         reset = tk.Button(self.window, text = "Clear Grid", font = self.font, height = 1, width = 15, command = self.resetted)
@@ -39,7 +38,7 @@ class SimulationView:
         back_button = tk.Button(self.window, text = "Back", font = self.font, height = 1, width = 15, command = self.back_to_menu)
         
         self.grid_count = tk.Scale(self.window, from_ = 1, to = self.controller.cell_count, command = self.cell_adjust, orient = "horizontal")
-        self.slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
+        self.frame_slider = tk.Scale(self.window, from_ = 1, to = 100, command = self.change_framerate, orient = "horizontal")
         self.grid_count.place(x = 570, y = 300)
         back_button.place(x = 555, y = 450)
         self.load_level.place(x = 555, y = 350)
@@ -53,10 +52,9 @@ class SimulationView:
         self.status.place(x = 575, y = 10)
         start.place(x = 555, y = 50)
         stop.place(x = 555, y = 110)
-        self.slider.place(x = 570, y = 240)
+        self.frame_slider.place(x = 570, y = 240)
         speedlabel.place(x = 575, y = 220)
         zoomlabel.place(x = 575, y = 280)
-
 
         self.width = 500
         self.height = 500
@@ -134,7 +132,7 @@ class SimulationView:
 
     def change_framerate(self, event):
         """Changes the speed of the models."""
-        self.controller.framerate = self.slider.get()
+        self.controller.framerate = self.frame_slider.get()
 
 
     def on_square_click(self, event):

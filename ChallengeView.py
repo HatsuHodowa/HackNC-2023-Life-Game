@@ -2,12 +2,12 @@ import SimulationView
 import tkinter as tk
 from tkinter import filedialog
 
+
 class ChallengeView(SimulationView.SimulationView):
 
 
     def __init__(self, controller, count):
         """Entrypoint to child function."""
-
         super().essential_gui(controller, count)
         
         self.window.title("Quame of Life: Challenges")
@@ -26,28 +26,33 @@ class ChallengeView(SimulationView.SimulationView):
 
 
     def update_score(self):
+        """Updates the scores of the user and the opponent."""
         controller = self.controller
         self.red_score.config(text = str(round(controller.opponent_points, 2)))
         self.blue_score.config(text = str(round(controller.player_points, 2)))
 
     def upload_file(self):
+        """Allows the player to upload level to game."""
         self.win.place_forget()
         super().resetted()
         super().upload_file()
         self.update_max_boxes()
 
     def update_max_boxes(self):
+        """Updates the amount of free boxes the user can place."""
         if self.controller.model.om.cell_limit != None:
             cells_left = self.controller.model.om.cell_limit - self.controller.current_blocks
             self.free_boxes.config(text = f"Placeable Boxes: {str(cells_left)}")
 
 
     def player_win(self):
+        """Displays label text when user wins."""
         self.win.config(text = "You win!")
         self.win.place(anchor = "center", relx = 0.5, rely = 0.5)
 
 
     def opponent_win(self):
+        """Displays label text when user loses."""
         self.win.config(text = "You lost!")
         self.win.place(anchor = "center", relx = 0.5, rely = 0.5)
 

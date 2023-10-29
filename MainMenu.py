@@ -7,6 +7,7 @@ import os
 class MainMenu:
 
     def __init__(self):
+        """Entry function to the class."""
 
         # main properties
         self.current_controller = None
@@ -39,16 +40,20 @@ class MainMenu:
         self.window.mainloop()
 
     def open_menu(self):
+        """Opens the ui portal for the menu."""
         self.window.wm_state("normal")
 
     def close_menu(self):
+        """Minimizes the ui portal for the menu."""
         self.window.wm_state("iconic")
 
     def to_simulation(self):
+        """Opens an instance of the simulation mode of the game."""
         self.close_menu()
         self.current_controller = SimulationController.SimulationController(self)
 
     def to_challenge(self):
+        """Opens an instance of the challenge mode of the game."""
         self.close_menu()
         self.current_controller = ChallengeController.ChallengeController(self)
     
