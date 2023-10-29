@@ -5,12 +5,24 @@ class Model:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.li = np.array([[0]*height] * width)
+        self.li = np.array([[0.0]*height] * width)
 
     def getCell(self, i, j):
         return self.li[i][j]
     def valid(self, i, j):
         return i >= 0 and i < self.width and j >= 0  and j < self.height
+    
+    def p(self,v ):
+        if v < 0:
+            return 0
+        elif v > 1:
+            return 1
+        else:
+            return v
+    def pall(self):
+        for i in range(self.width):
+            for j in range(self.height):
+                self.li[i][j] = self.p(self.li[i][j])
     def alive(self, i, j):
         c = 0
         for x in range(i-1, i+2):
