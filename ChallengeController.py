@@ -45,4 +45,3 @@ class ChallengeController(SimulationController.SimulationController):
         # updating current blocks
         if self.simulation_started == False:
             self.current_blocks = int(self.calculate_points(self.model.pm))
-            print(self.current_blocks)
