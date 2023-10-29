@@ -63,6 +63,9 @@ class SimulationController:
                 self.model.setCellO(i, j, 0)
                 self.model.setCellP(i, j, 0)
 
+    def onCellUpdate(self):
+        pass
+
     def update(self):
 
         # updating model
@@ -72,6 +75,7 @@ class SimulationController:
 
         if self.active == True and dt >= 1 / self.framerate:
             self.model.cellUpdate()
+            self.onCellUpdate()
             self.last_physics_update = current_time
 
         # updating display
