@@ -13,12 +13,13 @@ class MainMenu:
 
         # creating window
         self.window = tk.Tk()
+        self.window.configure(background = "gray")
         self.window.resizable(False, False)
         self.window.title("Quame of Life")
         self.window.geometry("750x500")
 
         # creates video
-        video_label = tk.Label(self.window)
+        video_label = tk.Label(self.window, height = 50, width = 50)
         video_label.pack()
         curr_path = os.path.dirname(__file__)
         video_path = curr_path + "\\Assets\\menu_video.mp4"
@@ -28,7 +29,7 @@ class MainMenu:
         # creating interface
         big_font = ('Helvetica', 50, 'bold')
         mid_font = ('Helvetica', 30, 'bold')
-        title = tk.Label(self.window, text = "Quame of Life", font = big_font)
+        title = tk.Label(self.window, text = "Quame of Life", font = big_font, fg = "white", bg = "#2a2a2a")
         sandbox = tk.Button(self.window, text = "Sandbox Mode", font = mid_font, command = self.to_simulation)
         challenge = tk.Button(self.window, text = "Challenge Mode", font = mid_font, command = self.to_challenge)
 
