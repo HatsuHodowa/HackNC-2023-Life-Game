@@ -31,6 +31,8 @@ class ChallengeView(SimulationView.SimulationView):
         self.blue_score.config(text = str(controller.player_points))
 
     def upload_file(self):
+        self.win.destroy()
+        self.controller.simulation_started = False
         super().resetted()
         super().upload_file()
         self.update_max_boxes()
