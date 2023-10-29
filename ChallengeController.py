@@ -33,6 +33,7 @@ class ChallengeController(SimulationController.SimulationController):
 
         # updating the challenge view
         self.view.update_score()
+        #yay
 
     def onCellUpdate(self):
         self.updatePoints()
