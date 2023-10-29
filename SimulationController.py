@@ -16,13 +16,16 @@ class SimulationController:
         self.menu = menu
 
         # modules
-        self.model = GameModel.Model(self.cell_count, self.cell_count)
-        self.view = SimulationView.SimulationView(self, self.cell_count)
+        self.setModules(self)
 
         # looping update
         self.last_physics_update = time.time()
         while True:
             self.update()
+
+    def setModules(self):
+        self.model = GameModel.Model(self.cell_count, self.cell_count)
+        self.view = SimulationView(self, self.cell_count)
             
     def updateCellCount(self, toSet):
         self.view.update_cell_count(toSet)
